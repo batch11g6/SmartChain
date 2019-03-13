@@ -1,9 +1,9 @@
 import argparse
 try:
-    from . import DB_conn
+    from . import db_connection
 except:
-    import DB_conn
-from mysql.connector import Error
+    import db_connection
+import psycopg2
 
 
 def check_auth_pool(number_check):
@@ -11,25 +11,23 @@ def check_auth_pool(number_check):
     isPresent=False
     details=''
     try:
-        conn = DB_conn.get_connection()
+        conn = db_connection.get_connection()
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM authenticated_pool WHERE random_number="+str(number_check))
-        row = cursor.fetchone()
-
-        while row is not None:
-            print(str(row[0]))
-            if str(row[0])==number_check:
-                print(str(row[1]))
-                details=str(row[1])
+        SQL_QUERY="SELECT * FROM authenticated_pool WHERE random_number=%s"
+        value=(str(number_check),)
+        cursor.execute(SQL_QUERY,value)
+        result = cursor.fetchall()
+        print(result)
+        for row in result:
+            if str(row[0])==str(number_check):
                 isPresent=True
-            row = cursor.fetchone()
  
-    except Error as e:
+    except (Exception,psycopg2.Error) as e:
         print(e)
     finally:
         cursor.close()
         conn.close()
-        
+    print(isPresent)
     return isPresent,details
  
 

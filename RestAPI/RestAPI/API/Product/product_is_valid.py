@@ -22,8 +22,8 @@ def check_validity(request):
     number=Dict['data']
 
     if number!=None:
-        prod_name,location,additional_details='Crocin','Mumbai','hd28972'
-        status=check_number.is_number_present(number)
+        prod_name,location_lat,location_long,additional_details='Crocin',12.88,77.34,'hd28972'
+        status=check_number.is_number_present(str(number))
         
         if status==True:
             delete_number.delete_number(number)
@@ -36,7 +36,7 @@ def check_validity(request):
                 pass
             else:
                 print('add to black list')
-                add_to_spurious_list.add_to_black_list(prod_name,location,additional_details)
+                add_to_spurious_list.add_to_black_list(prod_name,location_lat,location_long,additional_details)
                 # Return a warning message
                 details='Spurious'
 

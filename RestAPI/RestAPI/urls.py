@@ -24,6 +24,6 @@ from .API.Product.product_is_valid import check_validity
 urlpatterns = [
     
     path('testconnection/',test_conn),
-    path('api/manufacturer/isvaild/',check_validity)
+    path('api/product/isvaild/',check_validity),
 
 ]

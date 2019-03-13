@@ -1,19 +1,18 @@
 import argparse
 try:
-    from . import DB_conn
+    from . import db_connection
     from . import check_number
 except:
-    import DB_conn
+    import db_connection
     import check_number
-
-from mysql.connector import Error
+import psycopg2
 
 
 def insert_number(number):
     query = "INSERT INTO random_number_pool (random_number) VALUES("+number+")"
  
     try:
-        conn=DB_conn.get_connection()
+        conn=db_connection.get_connection()
         cursor = conn.cursor()
         if not check_number.is_number_present(number):
             print("Safe insert")
@@ -21,7 +20,7 @@ def insert_number(number):
         else:
             print('Already in DB')
         conn.commit()
-    except Error as error:
+    except (Exception,psycopg2.Error) as error:
         print(error)
  
     finally:

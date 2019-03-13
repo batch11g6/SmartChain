@@ -2,31 +2,33 @@
 import argparse
 from mysql.connector import Error
 try:
-    from . import DB_conn
+    from . import db_connection
 except:
-    import DB_conn
+    import db_connection
+import psycopg2
 
 # returns 'bool' True if number is pressent in database if not returns False 
 def is_number_present(number_check):
     isPresent=False
     try:
-        conn = DB_conn.get_connection()
+        conn = db_connection.get_connection()
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM random_number_pool WHERE random_number="+str(number_check))
-        row = cursor.fetchone()
+        print(number_check)
+        SQL_QUERY="SELECT * FROM random_number_pool WHERE random_number=%s"
+        cursor.execute(SQL_QUERY,(str(number_check),))
+        result = cursor.fetchall()
+        print(result)
 
-        while row is not None:
-            print(str(row[0]))
-            if str(row[0])==number_check:
+        for row in result:
+            if str(row[0])==str(number_check):
                 isPresent=True
-            row = cursor.fetchone()
  
-    except:
-        print('error')
+    except(Exception,psycopg2.Error) as error:
+        print(error)
     finally:
         cursor.close()
         conn.close()
-        
+    print('Random number isPresent ',isPresent)
     return isPresent
  
 
