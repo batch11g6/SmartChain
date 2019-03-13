@@ -1,17 +1,18 @@
 import argparse
 try:
-    from . import DB_conn
+    from . import db_connection
 except:
-    import DB_conn
+    import db_connection
 
 # Delets a number from database and returns the count of rows removed
 
 def delete_number(number):
 
-    conn =DB_conn.get_connection()
+    conn =db_connection.get_connection()
     cursor = conn.cursor()
-    sql = "DELETE FROM random_number_pool WHERE random_number ="+number
-    cursor.execute(sql)
+    SQL_QUERY = "DELETE FROM random_number_pool WHERE random_number =%s"
+    value=(number,)
+    cursor.execute(SQL_QUERY,value)
     conn.commit()
     print(cursor.rowcount, "record(s) deleted")
     return cursor.rowcount
