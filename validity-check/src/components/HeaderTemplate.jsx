@@ -8,13 +8,18 @@ export default class HeaderTemplate extends Component {
     return (
       <div>
         <Header >
-            <HeaderRow title="SCM" />
+            <HeaderRow title="SmartChain" />
             <Navigation>
-            <a href="/"><Link to={'/'}><Button colored style={{color: '#fff'}}>Home</Button></Link></a>
-                  <a href="/about"><Link to={'/about'}><Button colored style={{color: '#fff'}}>About</Button></Link></a>
+                  <a href="/">
+                      <Link to={'/'}><Button colored style={{color: '#fff'}}>Home</Button></Link>
+                  </a>
+                  
+                  <a href="/about">
+                      <Link to={'/about'}><Button colored style={{color: '#fff'}}>About</Button></Link>
+                  </a>
             </Navigation>
         </Header>
-        <Drawer title="SCM"/>
+        <Drawer title="SmartChain"/>
       </div>
     )
   }
