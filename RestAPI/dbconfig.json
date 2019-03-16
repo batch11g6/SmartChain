@@ -1,0 +1,6 @@
+{
+    "host":"localhost",
+    "database":"smartchain",
+    "user":"postgres",
+    "password":"password"
+}
