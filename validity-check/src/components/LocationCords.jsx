@@ -29,7 +29,6 @@ class LocationCords extends React.Component {
               { sessionStorage.setItem("lat",this.props.coords.latitude)}
           </div>
           : <div>Getting the location data&hellip; </div>;
-          
   }
 }
  
