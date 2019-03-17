@@ -1,26 +1,49 @@
 import React, { Component } from 'react'
-import {Header,HeaderRow,Drawer,Navigation,Button} from 'react-mdl'
+import {Header,HeaderRow,Drawer,Navigation,Button,Layout,Textfield,Content} from 'react-mdl'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import SpaceBlock from './SpaceBlock'
 
 
 export default class HeaderTemplate extends Component {
   render() {
     return (
-      <div>
-        <Header >
-            <HeaderRow title="SmartChain" />
-            <Navigation>
-                  <a href="/">
+<div className="demo-big-content">
+    <Layout>
+        <Header waterfall hideTop>
+            <HeaderRow title="Smart Chain">
+                
+            </HeaderRow>
+            <HeaderRow>
+                <Navigation>
+                <a href="/">
                       <Link to={'/'}><Button colored style={{color: '#fff'}}>Home</Button></Link>
-                  </a>
-                  
-                  <a href="/about">
+                </a>
+                <a href="/about">
                       <Link to={'/about'}><Button colored style={{color: '#fff'}}>About</Button></Link>
-                  </a>
-            </Navigation>
+                </a>
+                </Navigation>
+            </HeaderRow>
         </Header>
-        <Drawer title="SmartChain"/>
-      </div>
+
+        {/** Side Drawer navigation window */}
+        <Drawer title="Smart Chain">
+            <Navigation>
+                <a href="/">
+                      <Link to={'/'}><Button colored style={{color: '#808080	'}}>Home</Button></Link>
+                </a>
+                <a href="/about">
+                      <Link to={'/about'}><Button colored style={{color: '#808080	'}}>About</Button></Link>
+                </a>
+            </Navigation>
+        </Drawer>
+
+        <Content>
+            <div className="page-content" />
+        </Content>
+    </Layout>
+    <SpaceBlock/>
+    
+</div>
     )
   }
 }

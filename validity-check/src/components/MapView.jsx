@@ -6,9 +6,10 @@ import SpaceBlock from './SpaceBlock'
 
  class MapView extends Component {
   render() {
+    
     const style={
       width: '100%',
-    height: '600px',
+      height: '600px',
    
     }
     return (
@@ -21,7 +22,7 @@ import SpaceBlock from './SpaceBlock'
             lat: sessionStorage.getItem("lat"),
             lng: sessionStorage.getItem("long") 
           }}
-          zoom={10}
+          zoom={15}
           onClick={this.onMapClicked}
             >
             <Marker onClick={this.onMarkerClick} name={'location'} />

@@ -1,0 +1,4 @@
+{
+    "HOST_LOCAL":"http://localhost:9984",
+    "HOST_GLOBAL":"https://test.bigchaindb.com/"
+}

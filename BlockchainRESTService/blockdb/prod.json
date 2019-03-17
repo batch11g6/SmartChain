@@ -1,0 +1,31 @@
+{
+    "manufacturerDetails":{
+        "name":"Unilever",
+        "head qutaerslocation":{
+            "long":12.4,
+            "lat":62.44
+        },
+        "liscence":{
+            "id":"gdhu2u883",
+            "document":"https://drive",
+            "validity Period":{
+                "from":"dd/mm/yyyy",
+                "to":"dd/mm/yyy"
+            }
+        },
+        "products manufactured":["abc","xyz","..."]
+    },
+
+    "product Details":{
+        "name":"Prod",
+        "product id":"1234",
+        "manufactured date":"dd/mm/yyyy",
+        "expiry date":"dd/mm/yyyy",
+        "ingridients":["xyx","hhsdjd","yyd"],
+        "location":{
+            "long":12.4,
+            "lat":62.44
+        },
+        "country":"India"
+    }
+}
