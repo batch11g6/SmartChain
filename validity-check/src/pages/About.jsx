@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import HeaderTemplate from '../components/HeaderTemplate'
-import {Card, Button} from 'react-mdl'
+import {Card, Button, FABButton, Icon} from 'react-mdl'
 import SpaceBlock from '../components/SpaceBlock'
 
 
@@ -35,6 +35,7 @@ export default class About extends Component {
           <Button  raised ripple colored onClick={this.handleGithubClick}>
               GitHub
           </Button>
+          
         </div>
         </Card>
       </div>

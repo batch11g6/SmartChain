@@ -84,6 +84,9 @@ class Scanner extends Component {
               displayMessage: 'The product is authenticated. It is a valid product and safe to use',
               isPresent: json.isPresent,
               dialogColor: 'green'
+
+              // get the data from bigchain db using the hash i.e; "this.state.result"
+              
             })
             this.handleOpenDialog();
           }
@@ -162,7 +165,7 @@ class Scanner extends Component {
       -----Hide for mobile phones------
       */}
             <Cell col={5} >
-              <Card class="hide_block" shadow={0} style={{ width: '100%', height: '900px', margin: 'auto', right: "250px" }}>
+              <Card class="hide_block" shadow={1} style={{ width: '100%', height: '900px', margin: 'auto', right: "250px" }}>
                 <CardText>
                   <Card shadow={0} style={{ width: '100%', height: '584px', }}>
                     <img src={this.state.statusUrl} style={{ height: "300px", }} alt="Status logo" />
@@ -176,9 +179,9 @@ class Scanner extends Component {
           </Grid>
 
           {/** 
-      -----Only for mobile devices----
-      */}
-          <Card class="hide_desktop_block" shadow={0} style={{ width: '100%', height: '500px', margin: 'auto' }}>
+      -----Only for mobile devices----   NOT REQUIRED ---KEEP IT SHORT AND SIMPLE 
+
+      <Card class="hide_desktop_block" shadow={0} style={{ width: '100%', height: '500px', margin: 'auto' }}>
             <CardText>
               <Card shadow={0} style={{ width: '100%', height: '500px', }}>
                 <img src={this.state.statusUrl} style={{ height: "300px", }} alt="Status logo" />
@@ -188,17 +191,19 @@ class Scanner extends Component {
               </Card>
             </CardText>
           </Card>
-
+      */}
+          
           Content
             <br></br>
           Long: {sessionStorage.getItem("long")} &nbsp;
           Lat: {sessionStorage.getItem("lat")}
+
           <MapView />
         </div>
         {/**
       Dialog box 
       */}
-            <Dialog open={this.state.openDialog}>
+            <Dialog open={this.state.openDialog} style={{width:"350px"}}>
               <DialogTitle>Result</DialogTitle>
                   <DialogBox dialogColor={this.state.dialogColor} statusUrl={this.state.statusUrl} displayMessage={this.state.displayMessage} />
               <DialogActions>
