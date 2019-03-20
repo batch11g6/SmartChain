@@ -1,3 +1,7 @@
+/*
+For computers
+*/
+
 @media screen and (min-width: 600px) {
 
 .hide_desktop_block{
@@ -6,6 +10,10 @@
 }
 .data_table{
     left:35%;
+}
+.qr_scanner_design{
+    width:100px;
+    height: 220px;
 }
 }
 

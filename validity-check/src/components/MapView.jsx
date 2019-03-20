@@ -1,12 +1,12 @@
 
 import React, { Component } from 'react'
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import {Card, CardActions,Button,CardMenu,IconButton} from 'react-mdl'
+import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Card} from 'react-mdl'
 import SpaceBlock from './SpaceBlock'
 
  class MapView extends Component {
   render() {
-    
+
     const style={
       width: '100%',
       height: '600px',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Header,HeaderRow,Drawer,Navigation,Button,Layout,Textfield,Content} from 'react-mdl'
+import {Header,HeaderRow,Drawer,Navigation,Button,Layout,Content} from 'react-mdl'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import SpaceBlock from './SpaceBlock'
 
@@ -11,7 +11,7 @@ export default class HeaderTemplate extends Component {
     <Layout>
         <Header waterfall hideTop>
             <HeaderRow title="Smart Chain">
-                
+          
             </HeaderRow>
             <HeaderRow>
                 <Navigation>

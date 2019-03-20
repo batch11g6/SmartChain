@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import HeaderTemplate from '../components/HeaderTemplate'
-import {Card, Button, FABButton, Icon} from 'react-mdl'
+import {Card, Button } from 'react-mdl'
 import SpaceBlock from '../components/SpaceBlock'
 
 

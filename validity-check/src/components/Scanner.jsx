@@ -47,7 +47,13 @@ class Scanner extends Component {
     this.setState({
       openDialog: false
     });
+    this.setState({
+      statusUrl: 'https://cdn.dribbble.com/users/1221795/screenshots/5127790/main-gif-drrible.gif',
+      dialogColor: 'black',
+      displayMessage: "Scan the QR code by placing the product QR code in front of the camera"
+    });
   }
+  
   //------
   //responser to @validity check
 
@@ -56,49 +62,58 @@ class Scanner extends Component {
       result: res,
     })
 
-    var data = { 'data': res }
+    // Backend data
+    var data = { 
+      'data': this.state.result
+     }
 
-    var PATH_VALIDITY_CHECK = 'api/product/isvaild/'
-    //var URL = 'http://127.0.0.1:8000/'
-    var URL = 'https://smartchainrestapi.herokuapp.com/'
+    var PATH_URL = 'api/product/isvaild/'
+    //var DOMAIN_URL = 'https://smartchainrestapi.herokuapp.com/'
+    var DOMAIN_URL ='http://127.0.0.1:8000/'
     {/*
       Check the length of string  like "this.state.result.length === 20"  
       so that the unwanted strings  reaching server can be avoided
     */}
     if (this.state.result !== null) {
 
-      fetch(URL + PATH_VALIDITY_CHECK, {
+      fetch(DOMAIN_URL + PATH_URL, {
         method: 'POST',
         body: JSON.stringify(data)
       }).then((data) => data.json())
         .then((json) => {
+          // Response from backend
           console.log("json.isPresent", json.isPresent);
           console.log(json.details);
           this.setState({
             isPresent: json.isPresent,
             details: json.details
           })
-          if (json.details === 'ok this'|| json.isPresent===true) {
+          if (json.isPresent===true) {
             this.setState({
               statusUrl: 'https://cdn.dribbble.com/users/900431/screenshots/2346622/green-check.gif',
               displayMessage: 'The product is authenticated. It is a valid product and safe to use',
               isPresent: json.isPresent,
               dialogColor: 'green'
-
-              // get the data from bigchain db using the hash i.e; "this.state.result"
-              
             })
+            // get the data from bigchain db using the hash i.e; "this.state.result"
+
+
+            // Open dialog box
             this.handleOpenDialog();
           }
-          else if (json.isPresent === false && json.details === 'Spurious') {
+
+          else if (json.isPresent === false) {
             this.setState({
               statusUrl: 'https://cdn.dribbble.com/users/179979/screenshots/1747462/warning_skull.gif',
               displayMessage: 'The product seems to be counterfeit it is adviced not to use this product',
               isPresent: json.isPresent,
               dialogColor: 'orange'
             })
+
+
             this.handleOpenDialog();
           }
+
           else {  // Default display GIF
             this.setState({
               statusUrl: 'https://cdn.dribbble.com/users/1221795/screenshots/5127790/main-gif-drrible.gif',
@@ -139,7 +154,7 @@ class Scanner extends Component {
                 facingMode="rear"
             />
             */}
-                  <QrReader
+                  <QrReader 
                     delay={this.state.delay}
                     style={previewStyle}
                     onError={this.handleError}
