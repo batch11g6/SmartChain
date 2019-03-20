@@ -9,7 +9,7 @@ import psycopg2
 
 
 def insert_number(number):
-    query = "INSERT INTO random_number_pool (random_number) VALUES("+number+")"
+    query = "INSERT INTO random_number_pool (random_number) VALUES("+str(number)+")"
  
     try:
         conn=db_connection.get_connection()
