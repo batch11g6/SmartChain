@@ -16,6 +16,7 @@ def test_conn():
 @app.route('/api/productInfo/getInfo/<tx_id>',methods=['GET','POST'])
 def get_prod_info(tx_id):
     #transaction_id='80178ae696d5a324de29c965f4705dc46022e6dff17894391c2da1c1ac477826'
+    # ec2 : 6b4d1964188e6d1d51f7d2b83dcb6e99405f5982abf64ffa527e6e6ca1bba98f
     res=get_from_db.get_from_rest(tx_id)
 
     # Check the satus code first to know if the ID is actually valid
