@@ -1,9 +1,11 @@
 from bigchaindb_driver.crypto import generate_keypair
 import json
 import argparse
-import big_chain_conn
 import requests
-
+try:
+    from . import big_chain_conn
+except:
+    import big_chain_conn
 
 def keyword_search_db(keyword):
     bdb=big_chain_conn.get_connection()
