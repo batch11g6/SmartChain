@@ -8,7 +8,7 @@ import json
 # tranasction ID
 
 CONFIG_FILE_PATH='./bigchain_config.json'
-HOST='HOST_LOCAL'
+HOST='HOST_GLOBAL'
 
 
 def get_connection():

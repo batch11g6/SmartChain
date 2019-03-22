@@ -7,6 +7,7 @@ from ..Packages.auth_api import insert_number,check_number,delete_number
 from ..Packages.auth_api import add_to_spurious_list,add_to_authenticated_pool
 from ..Packages.auth_api import get_spurious_list,check_authenticated_pool
 from ..Packages.auth_api import get_random_number
+from ..Packages.blockdb import get_from_db
 
 
 @csrf_exempt
@@ -32,19 +33,32 @@ def check_validity(request):
         if status==True:
             delete_number.delete_number(number)
             add_to_authenticated_pool.add_to_pool(number,'valid')
+            
+            isPresent=True
             # return supply chain details instead 
+            try:
+                data_json=get_from_db.get_from_rest(hash_value)
+            except:
+                data_json={'result':'Unable to reach bigchain DB'}
+
             details="Not counterfeit"
         else:
             isPresent,details=check_authenticated_pool.check_auth_pool(number)
             if isPresent:
-                pass
+                try:
+                    data_json=get_from_db.get_from_rest(hash_value)
+                except:
+                    data_json={'result':'Unable to reach bigchain DB'}
             else:
                 print('add to black list')
                 add_to_spurious_list.add_to_black_list(prod_name,location_lat,location_long,additional_details)
                 # Return a warning message
                 details='counterfeit'
 
+                data_json={"result":"invalid product"}
+    print(json.dumps(data_json,indent=3))
     return JsonResponse({
                     'isPresent':isPresent,
-                    'details':details
+                    'details':details,
+                    'data':data_json['asset']
                     })
