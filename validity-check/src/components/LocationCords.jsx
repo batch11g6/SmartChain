@@ -34,7 +34,7 @@ class LocationCords extends React.Component {
  
 export default geolocated({
   positionOptions: {
-    enableHighAccuracy: false,
+    enableHighAccuracy: true,
   },
   userDecisionTimeout: 5000,
 })(LocationCords);
