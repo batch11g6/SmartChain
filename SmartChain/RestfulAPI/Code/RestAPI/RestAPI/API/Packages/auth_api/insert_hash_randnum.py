@@ -6,9 +6,9 @@ except:
 import psycopg2
 
 
-def insert_random_num(hash_value,random_number):
+def insert_random_num(hash_value,random_number,conn):
     try:
-        conn=db_connection.get_connection()
+        #conn=db_connection.get_connection()
         cursor=conn.cursor()
         SQL_QUERY = "INSERT INTO hash_randnumber ( hash,random_number) VALUES(%s,%s)"
         value=(hash_value,random_number)
@@ -18,5 +18,4 @@ def insert_random_num(hash_value,random_number):
     except(Exception,psycopg2.Error)as err:
         print(err)
         raise err
-    finally:
-        conn.close()
+

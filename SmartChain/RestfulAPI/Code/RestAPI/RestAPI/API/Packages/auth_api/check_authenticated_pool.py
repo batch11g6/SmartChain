@@ -6,12 +6,12 @@ except:
 import psycopg2
 
 
-def check_auth_pool(number_check):
+def check_auth_pool(number_check,conn):
     
     isPresent=False
     details=''
     try:
-        conn = db_connection.get_connection()
+        #conn = db_connection.get_connection()
         cursor = conn.cursor()
         SQL_QUERY="SELECT * FROM authenticated_pool WHERE random_number=%s"
         value=(str(number_check),)
@@ -24,13 +24,11 @@ def check_auth_pool(number_check):
  
     except (Exception,psycopg2.Error) as e:
         print(e)
-    finally:
-        cursor.close()
-        conn.close()
     print(isPresent)
     return isPresent,details
  
 
 
 if __name__=='__main__':
-    print(check_auth_pool('1'))
+    conn=db_connection.get_connection()
+    print(check_auth_pool('1',conn))
