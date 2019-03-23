@@ -6,9 +6,9 @@ import psycopg2
 
 
 
-def get_random_number(hash_value):
+def get_random_number(hash_value,conn):
     try:
-        conn=db_connection.get_connection()
+        
         cursor=conn.cursor()
         SQL_QUERY="SELECT random_number from hash_randnumber WHERE hash=%s"
         value=(hash_value,)

@@ -8,11 +8,11 @@ except:
 import psycopg2
 
 
-def insert_number(number):
+def insert_number(number ,conn):
     query = "INSERT INTO random_number_pool (random_number) VALUES("+str(number)+")"
  
     try:
-        conn=db_connection.get_connection()
+        #conn=db_connection.get_connection()
         cursor = conn.cursor()
         if not check_number.is_number_present(number):
             print("Safe insert")
@@ -22,10 +22,7 @@ def insert_number(number):
         conn.commit()
     except (Exception,psycopg2.Error) as error:
         print(error)
- 
-    finally:
-        cursor.close()
-        conn.close()
+
  
 if __name__ == '__main__':
     
@@ -33,4 +30,5 @@ if __name__ == '__main__':
     parser.add_argument('-n', '--number', type=str, required=True ,help="Random number")
     args = parser.parse_args()
     number = args.number
-    insert_number(number)
+    conn=db_connection.get_connection()
+    insert_number(number,conn)

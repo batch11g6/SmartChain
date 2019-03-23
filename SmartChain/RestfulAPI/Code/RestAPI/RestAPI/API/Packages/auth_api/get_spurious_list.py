@@ -6,10 +6,10 @@ except:
 import psycopg2
 
 
-def get_spurious():
+def get_spurious(conn):
     spurious_list=[]
     try:
-        conn = db_connection.get_connection()
+        #conn = db_connection.get_connection()
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM spurious_list")
         row = cursor.fetchone()
@@ -21,12 +21,10 @@ def get_spurious():
 
     except (Exception ,psycopg2.Error) as e:
         print(e)
-
-    finally:
-        cursor.close()
-        conn.close()
         
     return spurious_list
 
 if __name__=='__main__':
-    print(str(get_spurious()))
+
+    conn=db_connection.get_connection()
+    print(str(get_spurious(conn)))

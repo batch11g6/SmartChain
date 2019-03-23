@@ -6,7 +6,7 @@ except:
 
 # Delets a number from database and returns the count of rows removed
 
-def delete_number(number):
+def delete_number(number,conn):
 
     conn =db_connection.get_connection()
     cursor = conn.cursor()
@@ -25,4 +25,4 @@ if __name__ == '__main__':
 
     number = args.number
     # 535689400738783
-    print(delete_number(number))
+    
