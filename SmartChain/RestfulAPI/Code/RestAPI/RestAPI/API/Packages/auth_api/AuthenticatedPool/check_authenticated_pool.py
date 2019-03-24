@@ -1,8 +1,5 @@
 import argparse
-try:
-    from . import db_connection
-except:
-    import db_connection
+from .. import db_connection
 import psycopg2
 
 

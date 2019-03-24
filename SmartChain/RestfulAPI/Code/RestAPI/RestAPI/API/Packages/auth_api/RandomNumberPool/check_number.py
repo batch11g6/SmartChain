@@ -1,10 +1,6 @@
 
 import argparse
-
-try:
-    from . import db_connection
-except:
-    import db_connection
+from .. import db_connection
 import psycopg2
 
 # returns 'bool' True if number is pressent in database if not returns False 

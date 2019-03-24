@@ -1,10 +1,9 @@
 import argparse
-try:
-    from . import db_connection
-    from . import check_number
-except:
-    import db_connection
-    import check_number
+
+from .. import db_connection
+from ..RandomNumberPool import check_number
+
+
 import psycopg2
 
 
@@ -14,7 +13,7 @@ def insert_number(number ,conn):
     try:
         #conn=db_connection.get_connection()
         cursor = conn.cursor()
-        if not check_number.is_number_present(number):
+        if not check_number.is_number_present(number,conn):
             print("Safe insert")
             cursor.execute(query)
         else:

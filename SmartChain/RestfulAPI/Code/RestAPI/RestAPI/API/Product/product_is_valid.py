@@ -3,10 +3,10 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 
-from ..Packages.auth_api import insert_number,check_number,delete_number
-from ..Packages.auth_api import add_to_spurious_list,add_to_authenticated_pool
-from ..Packages.auth_api import get_spurious_list,check_authenticated_pool
-from ..Packages.auth_api import get_random_number
+from ..Packages.auth_api.RandomNumberPool import insert_number,check_number,delete_number
+from ..Packages.auth_api.SpuriousList import get_spurious_list, add_to_spurious_list
+from ..Packages.auth_api.AuthenticatedPool import check_authenticated_pool,add_to_authenticated_pool
+from ..Packages.auth_api.RandomNumberPool import get_random_number
 from ..Packages.blockdb import get_from_db
 from ..Packages.auth_api import db_connection
 

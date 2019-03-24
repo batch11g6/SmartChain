@@ -6,8 +6,10 @@ import json
 
 from ..Packages.blockdb import write_to_db
 from ..Packages.randomNumberGen import generate_randnum
-from ..Packages.auth_api import insert_number
-from ..Packages.auth_api import insert_hash_randnum
+from ..Packages.auth_api.RandomNumberPool import insert_number
+from ..Packages.auth_api.HashRandomNumber import insert_hash_randnum
+
+from ..Packages.auth_api import db_connection
 
 
 # NOTE Storing the details from the manufacturer about the medical suppliment
@@ -28,12 +30,12 @@ from ..Packages.auth_api import insert_hash_randnum
 
 @csrf_exempt
 def details_collector(request):
-
+    conn=db_connection.get_connection()
     data=request.body.decode()
     request_dict=json.loads(data)
     hash_value=write_to_db.write_to_db(dict(request_dict))
     rand_num=generate_randnum.get_random_number()
-    insert_number.insert_number(rand_num)
-    insert_hash_randnum.insert_random_num(hash_value,rand_num)
+    insert_number.insert_number(rand_num,conn)
+    insert_hash_randnum.insert_random_num(hash_value,rand_num,conn)
 
     return JsonResponse({"conn":request_dict})
