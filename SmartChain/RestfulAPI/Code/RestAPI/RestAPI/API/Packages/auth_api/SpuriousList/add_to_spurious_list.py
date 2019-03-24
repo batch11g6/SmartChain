@@ -1,8 +1,5 @@
 import argparse
-try:
-    from . import db_connection
-except:
-    import db_connection
+from .. import db_connection
 
 
 def add_to_black_list(prod_name, location_lat, location_long,additional_details,conn):

@@ -1,8 +1,5 @@
 import argparse
-try:
-    from . import db_connection
-except:
-    import db_connection
+from .. import db_connection
 
 # Delets a number from database and returns the count of rows removed
 
