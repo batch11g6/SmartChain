@@ -9,6 +9,7 @@ from ..Packages.auth_api.AuthenticatedPool import check_authenticated_pool,add_t
 from ..Packages.auth_api.RandomNumberPool import get_random_number
 from ..Packages.blockdb import get_from_db
 from ..Packages.auth_api import db_connection
+from ..Packages.geoDecoding import geo_decode
 from . import defaultValues
 
 
@@ -28,12 +29,15 @@ def pharma_validity(request):
     Dict=json.loads(data)
     print(Dict['data'])
     hash_value=Dict['data']
+    lati=Dict['lat']
+    longi=Dict['long']
 
     # Get corresponding random number for a given hash 
     number=str(get_random_number.get_random_number(hash_value,conn))
     print('NUMBER',number)
     if number!=None:
-        prod_name,location_lat,location_long,additional_details='Crocin',12.88,77.34,'hd28972'
+        physical_address=geo_decode.get_physical_address(lati,longi)
+        prod_name,location_lat,location_long,additional_details='Crocin',lati,longi,physical_address
         status=check_number.is_number_present(str(number),conn)
         
         if status==True:

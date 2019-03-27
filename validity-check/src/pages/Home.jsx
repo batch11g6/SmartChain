@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Scanner from '../components/Scanner'
 import HeaderTemplate from '../components/HeaderTemplate'
+import LocationCords from '../components/LocationCords'
 
 
 export default class Home extends Component {
@@ -8,6 +9,7 @@ export default class Home extends Component {
     return (
       <div>
         <HeaderTemplate />
+        <LocationCords/>
         <div class="card">
           <header class="card-header">
             <p class="card-header-title">

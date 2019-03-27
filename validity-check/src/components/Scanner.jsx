@@ -21,6 +21,7 @@ class Scanner extends Component {
     }
     // https://dribbble.com/shots/3576821-Scan-and-Climb
     this.handleScan = this.handleScan.bind(this);
+    this.okClickHandler=this.okClickHandler.bind(this);
   }
 
 
@@ -31,7 +32,9 @@ class Scanner extends Component {
 
     // Backend data
     var data = {
-      'data': this.state.result
+      'data': this.state.result,
+      'lat':sessionStorage.getItem('lat'),
+      'long':sessionStorage.getItem('long')
     }
 
     var PATH_URL = 'api/product/isvaild/'
@@ -100,6 +103,16 @@ class Scanner extends Component {
     console.error(err)
   }
 
+  okClickHandler(event){
+    this.setState({
+      statusUrl: 'https://cdn.dribbble.com/users/1221795/screenshots/5127790/main-gif-drrible.gif',
+      dialogColor: 'black',
+      displayMessage: "Scan the QR code by placing the product QR code in front of the camera",
+      productDetails:{}
+    })
+  }
+
+
   render() {
     // Styling for Scanner
     const previewStyle = {
@@ -159,8 +172,9 @@ class Scanner extends Component {
             resultCode={this.state.result}
             productDetails={this.state.productDetails}
           />
+          <br/>
+        <a class="button is-link is-rounded" onClick={this.okClickHandler}>OK</a>
         </div>
-
       </div>
 
     )
