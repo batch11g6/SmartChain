@@ -7,10 +7,11 @@ export default class Validationcard extends Component {
         super(props)
         this.state = {}
     }
+
+    
     //Fetch form blockchain
     render() {
         const dialogColor = this.props.dialogColor;
-
         return (
             <div>
                 <div class="card">
@@ -40,8 +41,9 @@ export default class Validationcard extends Component {
                                     <strong>Expiry date: </strong>{this.props.productDetails.expirydate}<br />
                                     <strong>Price (&#8377;): </strong>{this.props.productDetails.price}<br />
                                     <strong>batch number: </strong>{this.props.productDetails.batchnumber}<br />
-
+                                    
                                 </div>
+                                
                             </div>
                         </div>
 

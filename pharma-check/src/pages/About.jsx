@@ -30,7 +30,7 @@ export default class About extends Component {
                 <h4 class="card-header-title color_gray">
                   Smart Chain
                 </h4>
-                <a href="#" class="card-header-icon" aria-label="more options">
+                <a href="/about" class="card-header-icon" aria-label="more options">
                   <span class="icon">
                     <i class="fas fa-angle-down" aria-hidden="true"></i>
                   </span>

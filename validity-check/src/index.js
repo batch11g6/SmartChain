@@ -8,6 +8,8 @@ import 'react-mdl/extra/material.js';
 
 import Home from './pages/Home'
 import About from './pages/About'
+import Reports from './pages/Reports'
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 ReactDOM.render(
@@ -15,6 +17,7 @@ ReactDOM.render(
     <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/about' component={About} />
+          <Route path='/report' component={Reports}/>
     </Switch>
 </Router>, document.getElementById('root'));
 

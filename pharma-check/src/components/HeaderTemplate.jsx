@@ -42,12 +42,28 @@ export default class HeaderTemplate extends Component {
 
                                         </span>
                                         <span>
+                                            <a href="%PUBLIC_URL%/report" >
+                                                <Link to={'/report'}>Reports</Link>
+                                            </a>
+                                        </span>
+                                    </a>
+                                </p>
+
+                                <p class="control">
+                                    <a class=" ">
+                                        <span class="icon">
+
+                                        </span>
+                                        <span>
                                             <a href="%PUBLIC_URL%/about" >
                                                 <Link to={'/about'}>About</Link>
                                             </a>
                                         </span>
                                     </a>
                                 </p>
+
+
+
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
                         </div>
