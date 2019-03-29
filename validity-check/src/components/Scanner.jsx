@@ -3,6 +3,7 @@ import QrReader from 'react-qr-scanner'
 import Validationcard from './Validationcard'
 import './components.css';
 
+import Constants from '../Constants'
 
 // IP info access tocken 7d336261dbe2f2
 
@@ -37,9 +38,7 @@ class Scanner extends Component {
       'long':sessionStorage.getItem('long')
     }
 
-    var PATH_URL = 'api/product/isvaild/'
-    //var DOMAIN_URL = 'https://smartchainrestapi.herokuapp.com/'
-    var DOMAIN_URL ='http://127.0.0.1:8000/'
+   const {DOMAIN_URL, VALIDITY_API_PATH} =Constants
 
     {/*
       Check the length of string  like "this.state.result.length === 64"  
@@ -48,7 +47,7 @@ class Scanner extends Component {
 
     if (this.state.result !== null && this.state.result.length === 64) {
 
-      fetch(DOMAIN_URL + PATH_URL, {
+      fetch(DOMAIN_URL + VALIDITY_API_PATH, {
         method: 'POST',
         body: JSON.stringify(data)
       }).then((data) => data.json())

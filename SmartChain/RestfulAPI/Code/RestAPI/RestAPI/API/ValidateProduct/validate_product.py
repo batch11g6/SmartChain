@@ -8,9 +8,9 @@ from ..Packages.auth_api.SpuriousList import get_spurious_list, add_to_spurious_
 from ..Packages.auth_api.AuthenticatedPool import check_authenticated_pool,add_to_authenticated_pool
 from ..Packages.auth_api.RandomNumberPool import get_random_number
 from ..Packages.blockdb import get_from_db
-from ..Packages.auth_api import db_connection
 from ..Packages.geoDecoding import geo_decode
-from . import defaultValues
+from .. import default_constant_values
+from ..DatabaseConnector import db_connection
 
 
 #
@@ -58,7 +58,7 @@ def pharma_validity(request):
                 try:
                     data_json=get_from_db.get_from_rest(hash_value,conn)['asset']
 
-                    data_json=defaultValues.data_json
+                    data_json=default_constant_values.data_json
                     details='The product is counterfeit or authenticated'
                     #data_json={'result':'Unable to reach bigchain DB'}
                     isPresent=False
@@ -70,7 +70,7 @@ def pharma_validity(request):
                 # Return a warning message
                 details='counterfeit'
 
-                data_json=defaultValues.data_json
+                data_json=default_constant_values.data_json
                 isPresent=False
     print(json.dumps(data_json,indent=3))
     return JsonResponse({
