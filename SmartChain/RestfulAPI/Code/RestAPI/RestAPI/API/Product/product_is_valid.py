@@ -54,16 +54,18 @@ def check_validity(request):
                 except:
                     data_json={'result':'Unable to reach bigchain DB'}
             else:
-                print('add to black list')
-                add_to_spurious_list.add_to_black_list(prod_name,location_lat,location_long,additional_details,conn)
+                print('')
+                #Don't add to black list because this is user application #
+                #add_to_spurious_list.add_to_black_list(prod_name,location_lat,location_long,additional_details,conn)
                 # Return a warning message
                 details='counterfeit'
 
                 data_json=default_constant_values.data_json  # default value
                 isPresent=False
     print(json.dumps(data_json,indent=3))
+    
     return JsonResponse({
-                    'isPresent':isPresent,
-                    'details':details,
-                    'data':data_json
-                    })
+            'isPresent':isPresent,
+            'details':details,
+            'data':data_json
+        })

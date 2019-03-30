@@ -105,7 +105,7 @@ class Scanner extends Component {
   okClickHandler(event){
     this.setState({
       statusUrl: 'https://cdn.dribbble.com/users/1221795/screenshots/5127790/main-gif-drrible.gif',
-      dialogColor: 'black',
+      dialogColor: 'gray',
       displayMessage: "Scan the QR code by placing the product QR code in front of the camera",
       productDetails:{}
     })
