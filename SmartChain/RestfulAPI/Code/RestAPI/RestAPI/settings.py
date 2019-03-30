@@ -57,6 +57,7 @@ MIDDLEWARE = [
 #  Only these domains are allowed
 CORS_ORIGIN_WHITELIST = (
     'my-project-1506183410578.firebaseapp.com',
+    'smartchainbatch11.firebaseapp.com',
     'localhost:3000'
 )
 
@@ -64,7 +65,8 @@ CORS_ORIGIN_WHITELIST = (
 ALLOWED_HOSTS = [
     '192.168.1.9',
     'localhost',
-    'my-project-1506183410578.firebaseapp.com'
+    'my-project-1506183410578.firebaseapp.com',
+    'smartchainbatch11.firebaseapp.com'
 ]
 
 
