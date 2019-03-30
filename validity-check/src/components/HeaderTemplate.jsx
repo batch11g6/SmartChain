@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import logo from '../assets/smartchain.jpg'
+import SpaceBlock from './SpaceBlock'
+import './components.css'
 
 
 export default class HeaderTemplate extends Component {
     render() {
         return (
-            <div>
+            <div class="float_top">
                 <nav class="navbar is-transparent">
                     <div class="navbar-brand">
                         <a class="navbar-item" href="https://github.com/batch11g6/SmartChain">

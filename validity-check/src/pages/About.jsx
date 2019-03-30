@@ -18,7 +18,7 @@ export default class About extends Component {
       <div>
         <HeaderTemplate />
         <SpaceBlock />
-
+        <SpaceBlock />
         <div class="columns">
           <div class="column">
             {/** Empty column for space */}

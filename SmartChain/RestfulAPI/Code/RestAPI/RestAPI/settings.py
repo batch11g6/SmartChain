@@ -63,7 +63,6 @@ CORS_ORIGIN_WHITELIST = (
 
 
 ALLOWED_HOSTS = [
-    '192.168.1.9',
     'localhost',
     'my-project-1506183410578.firebaseapp.com',
     'smartchainbatch11.firebaseapp.com'

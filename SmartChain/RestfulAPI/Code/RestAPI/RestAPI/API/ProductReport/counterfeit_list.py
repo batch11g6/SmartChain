@@ -9,6 +9,6 @@ from ..DatabaseConnector import db_connection
 
 @csrf_exempt
 def get_counterfeit_list(request):
-    conn=db_connection.get_connection()
-    city_count=counterfeit_list_count.get_count(conn)
-    return JsonResponse({'count':city_count})
+    conn = db_connection.get_connection()
+    city_count = counterfeit_list_count.get_count(conn)
+    return JsonResponse({'count': city_count})
