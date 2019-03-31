@@ -56,7 +56,7 @@ export default class About extends Component {
                       <td><a href="https://github.com/Phaneendra97">Phaneendra A R</a></td>
                       <td>1KS15CS002</td>
                     </tr>
-                   <tr>
+                    <tr>
                       <td><a href="https://github.com/Mayurakr">Mayura K R</a></td>
                       <td>1KS15CS056</td>
                     </tr>

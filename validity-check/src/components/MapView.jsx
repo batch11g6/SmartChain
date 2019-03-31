@@ -1,18 +1,26 @@
 
 import React, { Component } from 'react'
-import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, Marker, GoogleApiWrapper, InfoWindow } from 'google-maps-react';
 import { Card } from 'react-mdl'
 import SpaceBlock from './SpaceBlock'
 import LocationCords from './LocationCords'
 
 class MapView extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showingInfoWindow: true,
+      activeMarker: {},
+      selectedPlace: {},
+    }
+  }
   render() {
 
     const style = {
       width: '100%',
       height: '800px',
     }
-    
+
     return (
       <div>
         <LocationCords />
@@ -27,7 +35,15 @@ class MapView extends Component {
             zoom={15}
             onClick={this.onMapClicked}
           >
-            <Marker onClick={this.onMarkerClick} name={'location'} />
+            <Marker onClick={this.onMarkerClick} name={'location'} title={this.props.citycount}
+              google={this.props.google}
+
+            />
+            <InfoWindow
+              marker={this.state.activeMarker}
+              visible={this.state.showingInfoWindow}>
+
+            </InfoWindow>
           </Map>
 
         </Card>

@@ -12,7 +12,7 @@ export default class Home extends Component {
         <HeaderTemplate />
         <SpaceBlock />
         <SpaceBlock />
-        <LocationCords/>
+        <LocationCords />
         <div class="card">
           <header class="card-header">
             <p class="card-header-title">

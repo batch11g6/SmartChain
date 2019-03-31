@@ -10,6 +10,7 @@ from .API.ProductDetails.collect_details import details_collector
 from .API.ProductDetails.get_product_details import get_product_information
 from .API.ValidateProduct.validate_product import pharma_validity
 from .API.ProductReport.counterfeit_list import get_counterfeit_list
+from .API.ReportOfCity.report_of_city import get_count_by_city
 
 
 urlpatterns = [
@@ -21,5 +22,6 @@ urlpatterns = [
     path('api/product/isvaild/', check_validity),
     path('api/validityproduct/pharmavalidity/', pharma_validity),
     path('api/counterfeitlist/counterfeiltcount/', get_counterfeit_list),
+    path('api/counterfeitlist/citycount/',get_count_by_city),
 
 ]
