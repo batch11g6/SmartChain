@@ -22,7 +22,7 @@ class Scanner extends Component {
     }
     // https://dribbble.com/shots/3576821-Scan-and-Climb
     this.handleScan = this.handleScan.bind(this);
-    this.okClickHandler=this.okClickHandler.bind(this);
+    this.okClickHandler = this.okClickHandler.bind(this);
   }
 
 
@@ -34,11 +34,11 @@ class Scanner extends Component {
     // Backend data
     var data = {
       'data': this.state.result,
-      'lat':sessionStorage.getItem('lat'),
-      'long':sessionStorage.getItem('long')
+      'lat': sessionStorage.getItem('lat'),
+      'long': sessionStorage.getItem('long')
     }
 
-   const {DOMAIN_URL, VALIDITY_API_PATH} =Constants
+    const { DOMAIN_URL, VALIDITY_API_PATH } = Constants
 
     {/*
       Check the length of string  like "this.state.result.length === 64"  
@@ -102,12 +102,12 @@ class Scanner extends Component {
     console.error(err)
   }
 
-  okClickHandler(event){
+  okClickHandler(event) {
     this.setState({
       statusUrl: 'https://cdn.dribbble.com/users/1221795/screenshots/5127790/main-gif-drrible.gif',
       dialogColor: 'gray',
       displayMessage: "Scan the QR code by placing the product QR code in front of the camera",
-      productDetails:{}
+      productDetails: {}
     })
   }
 
@@ -171,8 +171,8 @@ class Scanner extends Component {
             resultCode={this.state.result}
             productDetails={this.state.productDetails}
           />
-          <br/>
-        <a class="button is-link is-rounded" onClick={this.okClickHandler}>OK</a>
+          <br />
+          <a class="button is-link is-rounded" onClick={this.okClickHandler}>OK</a>
         </div>
       </div>
 
