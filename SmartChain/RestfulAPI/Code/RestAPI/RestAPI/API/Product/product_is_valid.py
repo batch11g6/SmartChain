@@ -69,3 +69,4 @@ def check_validity(request):
             'details':details,
             'data':data_json
         })
+
