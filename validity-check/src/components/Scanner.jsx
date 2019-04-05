@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import QrReader from 'react-qr-scanner'
-import { Card, CardText, Grid, Cell, DataTable, TableHeader, Dialog, DialogActions, DialogTitle, Button } from 'react-mdl'
-import DialogBox from './DialogBox'
-
+import Validationcard from './Validationcard'
 import './components.css';
-import MapView from './MapView'
 
+import Constants from '../Constants'
 
 // IP info access tocken 7d336261dbe2f2
 
@@ -19,43 +17,14 @@ class Scanner extends Component {
       isPresent: false,
       details: '',
       displayMessage: "Scan the QR code by placing the product QR code in front of the camera",
-      dialogColor: 'gray'
+      dialogColor: 'gray',
+      productDetails: {}
     }
     // https://dribbble.com/shots/3576821-Scan-and-Climb
     this.handleScan = this.handleScan.bind(this);
-    this.handleOpenDialog = this.handleOpenDialog.bind(this);
-    this.handleCloseDialog = this.handleCloseDialog.bind(this);
+    this.okClickHandler = this.okClickHandler.bind(this);
   }
 
-
-  //Not required
-  componentDidMount() {
-    fetch("http://www.geoplugin.net/json.gp")
-      .then(response => response.json())
-      .then(data => { console.log(data) })
-      .catch(error => console.error(error))
-  }
-  //Dialog -----
-  // set openDialog to false to disable 
-  handleOpenDialog() {
-    this.setState({
-      openDialog: true
-    });
-  }
-
-  handleCloseDialog() {
-    this.setState({
-      openDialog: false
-    });
-    this.setState({
-      statusUrl: 'https://cdn.dribbble.com/users/1221795/screenshots/5127790/main-gif-drrible.gif',
-      dialogColor: 'black',
-      displayMessage: "Scan the QR code by placing the product QR code in front of the camera"
-    });
-  }
-  
-  //------
-  //responser to @validity check
 
   handleScan(res) {
     this.setState({
@@ -63,43 +32,44 @@ class Scanner extends Component {
     })
 
     // Backend data
-    var data = { 
-      'data': this.state.result
-     }
+    var data = {
+      'data': this.state.result,
+      'lat': sessionStorage.getItem('lat'),
+      'long': sessionStorage.getItem('long')
+    }
 
-    var PATH_URL = 'api/product/isvaild/'
-    //var DOMAIN_URL = 'https://smartchainrestapi.herokuapp.com/'
-    var DOMAIN_URL ='http://127.0.0.1:8000/'
+    const { DOMAIN_URL, VALIDITY_API_PATH } = Constants
+
     {/*
-      Check the length of string  like "this.state.result.length === 20"  
+      Check the length of string  like "this.state.result.length === 64"  
       so that the unwanted strings  reaching server can be avoided
     */}
-    if (this.state.result !== null) {
 
-      fetch(DOMAIN_URL + PATH_URL, {
+    if (this.state.result !== null && this.state.result.length === 64) {
+
+      fetch(DOMAIN_URL + VALIDITY_API_PATH, {
         method: 'POST',
         body: JSON.stringify(data)
       }).then((data) => data.json())
         .then((json) => {
           // Response from backend
           console.log("json.isPresent", json.isPresent);
-          console.log(json.details);
+          console.log("json.data", json.data.data.productname);
+          //console.log(json.details.data.productname);
+
           this.setState({
             isPresent: json.isPresent,
-            details: json.details
+            details: json.details,
+            productDetails: json.data.data
           })
-          if (json.isPresent===true) {
+          if (json.isPresent === true) {
             this.setState({
               statusUrl: 'https://cdn.dribbble.com/users/900431/screenshots/2346622/green-check.gif',
               displayMessage: 'The product is authenticated. It is a valid product and safe to use',
               isPresent: json.isPresent,
               dialogColor: 'green'
             })
-            // get the data from bigchain db using the hash i.e; "this.state.result"
 
-
-            // Open dialog box
-            this.handleOpenDialog();
           }
 
           else if (json.isPresent === false) {
@@ -109,9 +79,6 @@ class Scanner extends Component {
               isPresent: json.isPresent,
               dialogColor: 'orange'
             })
-
-
-            this.handleOpenDialog();
           }
 
           else {  // Default display GIF
@@ -124,108 +91,91 @@ class Scanner extends Component {
         })
         .catch((err) => console.log(err))
     }
-    else{
+    else {
       console.log('waiting')
     }
+
+
   }
 
   handleError(err) {
     console.error(err)
   }
 
+  okClickHandler(event) {
+    this.setState({
+      statusUrl: 'https://cdn.dribbble.com/users/1221795/screenshots/5127790/main-gif-drrible.gif',
+      dialogColor: 'gray',
+      displayMessage: "Scan the QR code by placing the product QR code in front of the camera",
+      productDetails: {}
+    })
+  }
+
+
   render() {
+    // Styling for Scanner
     const previewStyle = {
       height: 400,
       width: 420,
     }
     return (
-      <div >
-        <div >
-          <Grid className="demo-grid-2">
-            <Cell col={7}>
-              <Card shadow={0} style={{ width: '100%', height: '600px', margin: 'auto' }}>
-                <CardText className="">
-                  {/**
-            <QrReader 
-                delay={this.state.delay}
-                style={previewStyle}
-                onError={this.handleError}
-                onScan={this.handleScan}
-                facingMode="rear"
-            />
-            */}
-                  <QrReader 
-                    delay={this.state.delay}
-                    style={previewStyle}
-                    onError={this.handleError}
-                    onScan={this.handleScan}
-                    facingMode="rear"
-                  />
-                  <DataTable
-                    shadow={0}
-                    rows={[{ ispresent: this.state.isPresent, code: this.state.result, details: this.state.details },]}
-                    className="data_table"
-                  >
-                    <TableHeader numeric name="ispresent" tooltip="QR Code value">Is Valid</TableHeader>
-                    <TableHeader numeric name="code" tooltip="QR Code value">Code</TableHeader>
-                    <TableHeader numeric name="details" tooltip="Details">Details</TableHeader>
-                  </DataTable>
-                </CardText>
-              </Card>
-            </Cell>
 
-            {/* Remove this card content to add authentication details*/}
-            {/** 
-      -----Only for Desktops devices----
-      -----Hide for mobile phones------
-      */}
-            <Cell col={5} >
-              <Card class="hide_block" shadow={1} style={{ width: '100%', height: '900px', margin: 'auto', right: "250px" }}>
-                <CardText>
-                  <Card shadow={0} style={{ width: '100%', height: '584px', }}>
-                    <img src={this.state.statusUrl} style={{ height: "300px", }} alt="Status logo" />
-                    <Card border class="mdl-card__supporting-text" style={{ color: this.state.dialogColor }}>
-                      {this.state.displayMessage}
-                    </Card>
-                  </Card>
-                </CardText>
-              </Card>
-            </Cell>
-          </Grid>
-
-          {/** 
-      -----Only for mobile devices----   NOT REQUIRED ---KEEP IT SHORT AND SIMPLE 
-
-      <Card class="hide_desktop_block" shadow={0} style={{ width: '100%', height: '500px', margin: 'auto' }}>
-            <CardText>
-              <Card shadow={0} style={{ width: '100%', height: '500px', }}>
-                <img src={this.state.statusUrl} style={{ height: "300px", }} alt="Status logo" />
-                <div border class="mdl-card__supporting-text" style={{ color: this.state.dialogColor }}>
-                  {this.state.displayMessage}
-                </div>
-              </Card>
-            </CardText>
-          </Card>
-      */}
-          
-          Content
-            <br></br>
-          Long: {sessionStorage.getItem("long")} &nbsp;
-          Lat: {sessionStorage.getItem("lat")}
-
-          <MapView />
+      <div class="columns">
+        {/**First column */}
+        <div class="column">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title ">
+                Scan the QR Code
+              </p>
+              <a href="#" class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </a>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                {/*Scanner block*/}
+                <QrReader
+                  delay={this.state.delay}
+                  style={previewStyle}
+                  onError={this.handleError}
+                  onScan={this.handleScan}
+                  facingMode="rear"
+                />
+                <table class="table is-striped is-bordered">
+                  <thead>
+                    <th>ID</th>
+                    <th>Valid</th>
+                    <th>Details</th>
+                  </thead>
+                  <tr>
+                    <td>{this.state.result}</td>
+                    <td>{this.state.isPresent}</td>
+                    <td>{this.state.details}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
-        {/**
-      Dialog box 
-      */}
-            <Dialog open={this.state.openDialog} style={{width:"350px"}}>
-              <DialogTitle>Result</DialogTitle>
-                  <DialogBox dialogColor={this.state.dialogColor} statusUrl={this.state.statusUrl} displayMessage={this.state.displayMessage} />
-              <DialogActions>
-                  <Button type='button' onClick={this.handleCloseDialog}>OK</Button>
-              </DialogActions>
-            </Dialog>
-             </div>
+
+
+        <div class="column">
+          <Validationcard
+            statusUrlImage={this.state.statusUrl}
+            displayMessage={this.state.displayMessage}
+            dialogColor={this.state.dialogColor}
+            isPresent={this.state.isPresent}
+            resultCode={this.state.result}
+            productDetails={this.state.productDetails}
+          />
+          <br />
+          <a class="button is-link is-rounded" onClick={this.okClickHandler}>OK</a>
+        </div>
+      </div>
+
     )
   }
 }

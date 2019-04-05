@@ -1,18 +1,4 @@
-"""RestAPI URL Configuration
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
@@ -21,11 +7,21 @@ from django.conf.urls import url
 from .API.testConnection.test_connection import test_conn
 from .API.Product.product_is_valid import check_validity
 from .API.ProductDetails.collect_details import details_collector
+from .API.ProductDetails.get_product_details import get_product_information
+from .API.ValidateProduct.validate_product import pharma_validity
+from .API.ProductReport.counterfeit_list import get_counterfeit_list
+from .API.ReportOfCity.report_of_city import get_count_by_city
+
 
 urlpatterns = [
 
-    path('testconnection/',test_conn),
-    path('api/product/isvaild/',check_validity),
-    path('api/productdetails/collectdetails/',details_collector),
+    path('testconnection/', test_conn),
+    path('api/productdetails/collectdetails/', details_collector),
+    path('api/productdetails/getdetails', get_product_information),
+
+    path('api/product/isvaild/', check_validity),
+    path('api/validityproduct/pharmavalidity/', pharma_validity),
+    path('api/counterfeitlist/counterfeiltcount/', get_counterfeit_list),
+    path('api/counterfeitlist/citycount/',get_count_by_city),
 
 ]
