@@ -32,28 +32,14 @@ def check_validity(request):
     print('NUMBER',number)
     if number!=None:
         prod_name,location_lat,location_long,additional_details='Crocin',12.88,77.34,'hd28972'
-        status=check_number.is_number_present(str(number),conn)
         
-        if status==True:
-            delete_number.delete_number(number,conn)
-            add_to_authenticated_pool.add_to_pool(number,'valid',conn)
-
-            isPresent=True
-            # return supply chain details instead 
-            try:
-                data_json=get_from_db.get_from_rest(hash_value,conn)['asset']
-            except:
-                data_json={'result':'Unable to reach bigchain DB'}
-
-            details="Not counterfeit"
-        else:
-            isPresent,details=check_authenticated_pool.check_auth_pool(number,conn)
-            if isPresent:
+        isPresent,details=check_authenticated_pool.check_auth_pool(number,conn)
+        if isPresent:
                 try:
                     data_json=get_from_db.get_from_rest(hash_value,conn)['asset']
                 except:
                     data_json={'result':'Unable to reach bigchain DB'}
-            else:
+        else:
                 print('')
                 #Don't add to black list because this is user application #
                 #add_to_spurious_list.add_to_black_list(prod_name,location_lat,location_long,additional_details,conn)
@@ -62,6 +48,7 @@ def check_validity(request):
 
                 data_json=default_constant_values.data_json  # default value
                 isPresent=False
+                
     print(json.dumps(data_json,indent=3))
     
     return JsonResponse({
