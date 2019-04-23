@@ -42,7 +42,7 @@ export default class About extends Component {
                   <br />
                   <h1 class="color_gray">Project Mentor: Sangeetha V</h1>
 
-                  <h1 className="color_gray">Tream Members</h1>
+                  <h1 className="color_gray">Team Members</h1>
                   <table >
                     <thead>
                       <th>Name</th>
