@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
-import MapView from '../components/MapView'
 import './components.css'
 
-export default class Validationcard extends Component {
+import { connect } from 'react-redux';
+import { fetchProductDetails } from '../actions/fetchDetails'
+
+class Validationcard extends Component {
     constructor(props) {
         super(props)
         this.state = {}
     }
 
-    
+
     //Fetch form blockchain
     render() {
-        const dialogColor = this.props.dialogColor;
         return (
             <div>
                 <div class="card">
@@ -31,25 +32,28 @@ export default class Validationcard extends Component {
                                 <div class="content color_gray">
                                     {/*Scanner block*/}
                                     <div>
-                                        <img width="40%" src={this.props.statusUrlImage} />
-                                        <p style={{ color: dialogColor }}>{this.props.displayMessage}</p>
+                                        <img width="40%" src={this.props.resultdata.statusUrl} />
+                                        <p style={{ color: this.props.resultdata.dialogColor }}>{this.props.resultdata.displayMessage}</p>
                                     </div>
                                     <br />
-                                    <strong>Product Name: </strong> {this.props.productDetails.productname}<br />
-                                    <strong>Ingredients: </strong>{this.props.productDetails.ingredients}<br />
-                                    <strong>Manufactured date: </strong>{this.props.productDetails.manufactureddate}<br />
-                                    <strong>Expiry date: </strong>{this.props.productDetails.expirydate}<br />
-                                    <strong>Price (&#8377;): </strong>{this.props.productDetails.price}<br />
-                                    <strong>batch number: </strong>{this.props.productDetails.batchnumber}<br />
-                                    
+                                    <strong>Product Name: </strong> {this.props.resultdata.productname}<br />
+                                    <strong>Ingredients: </strong>{this.props.resultdata.ingredients}<br />
+                                    <strong>Manufactured date: </strong>{this.props.resultdata.manufactureddate}<br />
+                                    <strong>Expiry date: </strong>{this.props.resultdata.expirydate}<br />
+                                    <strong>Price (&#8377;): </strong>{this.props.resultdata.price}<br />
+                                    <strong>batch number: </strong>{this.props.resultdata.batchnumber}<br />
                                 </div>
-                                
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         )
     }
 }
+
+const mapStateToProps = state => ({
+    resultdata: state.resultdata.detail
+})
+
+export default connect(mapStateToProps, { fetchProductDetails })(Validationcard)
