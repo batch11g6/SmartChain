@@ -1,0 +1,66 @@
+
+@media screen and (min-width: 600px) {
+
+  .hide_desktop_block{
+      display : none;
+  
+  }
+  .data_table{
+      left:35%;
+  }
+  .qr_scanner_design{
+      width:100px;
+      height: 220px;
+  }
+  }
+  
+  /*
+  For mobile devices
+  */
+  @media screen and (max-width: 600px) {
+      .hide_mobile_block{
+          display : none;
+      }
+      .data_table{
+          left:10%;
+      }
+      .qr_scanner_size{
+          height: 400;
+        width: 420;
+      }
+    }
+  
+    .color_gray{
+        color: gray;
+    }
+
+tab1{
+    padding-left:4em ;
+    line-height: 26pt;
+    font-size: 18px;
+    padding-right: 5em;
+    
+  }
+  .padding{
+    margin: 10px;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  .color_gray{
+    color: gray;
+}  
+
+tab2{
+  padding-left:3em ;
+  line-height: 26pt;
+  font-size: 18px;
+  padding-right: 4em;
+  
+}
+tab3{
+  padding-left:1em ;
+  line-height: 26pt;
+  font-size: 18px;
+  padding-right: 2em;
+  
+}
