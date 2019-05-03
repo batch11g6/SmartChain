@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SpaceBlock from '../components/SpaceBlock'
 import Constants from '../Constants'
 import HeaderTemplate from '../components/HeaderTemplate'
+import LinearSpace from './LinearSpace'
 import './components.css'
 
 export default class Login extends Component {
@@ -37,6 +38,7 @@ export default class Login extends Component {
             console.log(json.status)
             if(json.status===true){
                 sessionStorage.setItem('login','success')
+                sessionStorage.setItem('username',this.state.userid)
                 window.location.reload(1)
                 sessionStorage.setItem('secret',json.secret)
             }
@@ -52,18 +54,25 @@ export default class Login extends Component {
         <SpaceBlock />
        <div class="columns">
             <div class="column">
-                <div class="card">
+                <div >
                     <div class="columns">
                     <div class="column">
-                        <img src="https://cdn.dribbble.com/users/1221795/screenshots/5127790/main-gif-drrible.gif" 
-                            width="80%"
-                            height="80%"
+                    <div style={{padding: "40px"}}>
+                    <img src="https://cdn.dribbble.com/users/1052957/screenshots/3453371/factory-1.gif" 
+                            width="90%"
+                            height="90%"
                         />
                     </div>
-                    <div class="cloumn">
+                    </div>
+                    <div class="column color_gray padding" >
+                    <br></br>
                         <p class="color_gray">
-                            Welcome to smart Chain manufacturer portal <br/>
-                            Welcome to smart Chain manufacturer portal
+                            <tab1>
+                            A Smart portal to add new product to blockchain
+                            DB and  also  track  product  location  details. 
+                            This portal  provides simple interface to 
+                            interact with  the backend server
+                            </tab1>
                         </p>
                     </div> 
                     </div>
@@ -72,7 +81,7 @@ export default class Login extends Component {
             </div>
             <div class="column">
 
-            <div class="card">
+            <div >
             <SpaceBlock />
             <center>
             <div style={{width:'50%'}}>
@@ -91,7 +100,6 @@ export default class Login extends Component {
             </div>
             </div>
             </center>
-            <SpaceBlock />
             <SpaceBlock />
             </div>
             </div>
