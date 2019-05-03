@@ -5,6 +5,8 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home'
 import About from './pages/About'
+import UpdateProduct from './pages/UpdateProduct'
+import Page404 from './pages/Page404'
 
 
 ReactDOM.render(
@@ -12,8 +14,9 @@ ReactDOM.render(
     <Switch>
           <Route exact path='/home' component={Home} />
           <Route exact path='/' component={Home} />
-          <Route path='/about' component={About} />
-          
+          <Route exact path='/about' component={About} />
+          <Route exact path='/update' component={UpdateProduct}/>
+          <Route component={Page404}/>
     </Switch>
 </Router>, document.getElementById('root'));
 
