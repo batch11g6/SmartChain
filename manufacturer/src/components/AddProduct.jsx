@@ -3,6 +3,7 @@ import SpaceBlock from './SpaceBlock'
 import './components.css';
 import DatePicker from 'react-date-picker';
 import Constants from '../Constants'
+import LoadingAnimation from '../components/LoadingAnimation'
 var jwt = require('jwt-simple');
 
 
@@ -19,6 +20,7 @@ export default class AddProduct extends Component {
             batchno:'',
             productTransactionID:'',
             type:'danger',
+            wait:null,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleChangeexp= this.handleChangeexp.bind(this);
@@ -27,6 +29,7 @@ export default class AddProduct extends Component {
         this.handleIngredientsChange= this.handleIngredientsChange.bind(this)
         this.handlePriceChange= this.handlePriceChange.bind(this);
         this.handleBatchNoChange= this.handleBatchNoChange.bind(this)
+        this.handleClear=this.handleClear.bind(this);
     }
 
     handleChange(date) {
@@ -77,25 +80,39 @@ export default class AddProduct extends Component {
         var token = jwt.encode(data, secret);
         console.log(token)
         console.log(data)
-        
+        this.setState({wait:true})
         fetch(DOMAIN_URL+ADD_PRODUCT, {
             method:'POST',
-            body: JSON.stringify(token)
+            body: JSON.stringify(data)
         })
         .then((data)=>data.json())
         .then((json)=>{
             console.log(json)
             if(json.hash.length=== 64){
-                this.setState({productTransactionID:json.hash, type:'success'})
+                this.setState({productTransactionID:json.hash, type:'success', wait:false})
             }
         })
         .catch((err)=>console.log(err))
     }
-    
+    handleClear(){
+        this.setState({
+            date: new Date(),
+            dateexp:new Date(),
+            productname:'',
+            ingredients:'',
+            price:'',
+            batchno:'',
+            productTransactionID:'',
+        })
+    }
 
     render() {
 
-        return (
+        if(this.state.wait===true){
+           return( <LoadingAnimation />);
+        }
+        else{
+            return(
                 <div>
                     <br /><br />
                     <center><h1 class="color_gray">Enter the Product details</h1></center>
@@ -157,11 +174,15 @@ export default class AddProduct extends Component {
                                     </div>
                                 </div>
                                 <br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a class="button is-info is-rounded" onClick={this.handleSubmit}>Add Product</a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a class="button is-info is-rounded" onClick={this.handleClear}>Clear Details</a>
                             </div>
                         </div>
                     </div>
                 </div>
-        )
+            )
+        }
     }
 }
