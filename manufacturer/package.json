@@ -1,22 +1,21 @@
 {
-  "name": "manufacturer",
+  "name": "manufacturerportal",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "cryptr": "^4.0.2",
-    "hasha": "^5.0.0",
     "jwt-simple": "^0.5.6",
-    "password-hash": "^1.2.2",
+    "leaflet": "^1.4.0",
+    "leaflet-ant-path": "^1.2.1",
     "react": "^16.8.6",
     "react-date-picker": "^7.5.0",
     "react-datepicker": "^2.5.0",
     "react-dom": "^16.8.6",
     "react-geolocated": "^2.4.1",
-    "react-notification-alert": "0.0.12",
+    "react-leaflet": "^2.2.1",
+    "react-leaflet-ant-path": "^1.1.0",
     "react-qr-scanner": "0.0.8",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "3.0.0",
-    "reactstrap": "^8.0.0"
+    "react-scripts": "3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

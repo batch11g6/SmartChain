@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import logo from '../assets/smartchain.jpg'
-import { cyan, red } from 'ansi-colors';
+import './components.css'
 
 
 export default class HeaderTemplate extends Component {
@@ -13,12 +13,13 @@ export default class HeaderTemplate extends Component {
         sessionStorage.removeItem('login')
         sessionStorage.removeItem('secret')
         sessionStorage.removeItem('username')
+        sessionStorage.removeItem('loginupdate')
         window.location.reload(1)
     }
     render() {
         return (
-            <div>
-                <nav class="navbar is-transparent">
+            <div class="sticky">
+                <nav class="navbar is-transparent ">
                     <div class="navbar-brand">
                         <a class="navbar-item" href="https://github.com/batch11g6/SmartChain">
                             <img src={logo} alt="Smart Chain" width="52" height="58" />
@@ -40,8 +41,8 @@ export default class HeaderTemplate extends Component {
 
                                         </span>
                                         <span>
-                                            <a href="%PUBLIC_URL%/" >
-                                                <Link to={'/'}>Home</Link>
+                                            <a href="/" >
+                                                <Link to={'/home'}>Home</Link>
                                             </a>
                                         </span>
                                     </a>
@@ -53,7 +54,7 @@ export default class HeaderTemplate extends Component {
 
                                         </span>
                                         <span>
-                                            <a href="%PUBLIC_URL%/" >
+                                            <a href="/update" >
                                                 <Link to={'/update'}>Update</Link>
                                             </a>
                                         </span>
@@ -65,7 +66,7 @@ export default class HeaderTemplate extends Component {
 
                                         </span>
                                         <span>
-                                            <a href="%PUBLIC_URL%/"  onClick={this.handleLogout}>
+                                            <a href="/"  onClick={this.handleLogout}>
                                                 <Link to={'/'}>Logout</Link>
                                             </a>
                                         </span>
@@ -77,7 +78,7 @@ export default class HeaderTemplate extends Component {
 
                                         </span>
                                         <span>
-                                            <a href="%PUBLIC_URL%/about" >
+                                            <a href="/about" >
                                                 <Link to={'/about'}>About</Link>
                                             </a>
                                         </span>

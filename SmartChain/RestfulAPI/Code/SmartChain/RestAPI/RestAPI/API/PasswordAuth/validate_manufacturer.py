@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
 import json
@@ -13,10 +13,12 @@ def validate_manufacturer(request):
     conn=db_connection.get_connection()
     data=request.body.decode()
     request_dict=json.loads(data)
+    print(request_dict)
     username=request_dict['user']
     password=request_dict['password']
     status=validate_password.validate_password(conn, username, password)
     print('login status', status)
     key=default_constant_values.JWT_256_BIT_KEY
-    return JsonResponse({'status':status,'secret': key})
+    print({'status':status, 'secret': key})
+    return JsonResponse({'status':status, 'secret': key}, content_type="text/json")
     

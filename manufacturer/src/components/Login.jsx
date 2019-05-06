@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import SpaceBlock from '../components/SpaceBlock'
 import Constants from '../Constants'
 import HeaderTemplate from '../components/HeaderTemplate'
-import LinearSpace from './LinearSpace'
+import factorylogo from '../assets/factory-1.gif'
 import './components.css'
+
 
 export default class Login extends Component {
     constructor(){
@@ -29,21 +30,30 @@ export default class Login extends Component {
         var pwd=this.state.password
         var user=this.state.userid
         var data={'user':user ,'password':pwd}
-        fetch(DOMAIN_URL+PASSWORD_CHECK,{
+        
+        
+        console.log(DOMAIN_URL,PASSWORD_CHECK , data)
+
+        fetch(DOMAIN_URL+PASSWORD_CHECK, {
             method:'POST',
-            body:JSON.stringify(data)
-        })
-        .then((data)=>data.json())
-        .then((json)=>{
-            console.log(json.status)
-            if(json.status===true){
+            body:JSON.stringify(data),
+            mode: 'cors',
+            headers: { 
+                'Content-Type': 'application/json',
+                "Accept": 'application/json',
+         }
+        }).then((data)=> data.json())
+        .then((res)=>{
+            console.log(res)
+            console.log(res.status)
+            if(res.status===true){
                 sessionStorage.setItem('login','success')
                 sessionStorage.setItem('username',this.state.userid)
+                sessionStorage.setItem('secret',res.secret)
                 window.location.reload(1)
-                sessionStorage.setItem('secret',json.secret)
             }
         })
-        .catch((err)=>console.log(err))
+        .catch(function(err) {console.log("ERROR ", err)})
     }
 
   render() {
@@ -58,7 +68,7 @@ export default class Login extends Component {
                     <div class="columns">
                     <div class="column">
                     <div style={{padding: "40px"}}>
-                    <img src="https://cdn.dribbble.com/users/1052957/screenshots/3453371/factory-1.gif" 
+                    <img src={factorylogo}
                             width="90%"
                             height="90%"
                         />

@@ -2,17 +2,20 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-import json
-import jwt
 
 from ..Packages.blockdb import write_to_db
 from ..Packages.randomNumberGen import generate_randnum
 from ..Packages.auth_api.RandomNumberPool import insert_number
 from ..Packages.auth_api.HashRandomNumber import insert_hash_randnum
-from ..Packages.auth_api.PackageDetails import add_package_hash
 from ..Packages.auth_api import db_connection
 
+from ..Packages.auth_api.PackageDetails import add_package_hash
+
 from .. import default_constant_values
+
+import json
+import jwt
+
 # NOTE Storing the details from the manufacturer about the medical suppliment
 #
 # The data is received in the form of json

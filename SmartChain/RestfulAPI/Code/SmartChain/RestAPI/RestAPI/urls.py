@@ -13,6 +13,8 @@ from .API.ProductReport.counterfeit_list import get_counterfeit_list
 from .API.ProductReport.counterfeit_cords import get_city_cords
 from .API.ReportOfCity.report_of_city import get_count_by_city
 from .API.PasswordAuth.validate_manufacturer import validate_manufacturer
+from .API.UpdateProductScan.add_productscan_info import add_scan_info
+from .API.UpdateProductScan.trace_product import get_product_status
 
 
 urlpatterns = [
@@ -27,7 +29,7 @@ urlpatterns = [
     path('api/counterfeitlist/counterfeiltcount/', get_counterfeit_list),
     path('api/counterfeitlist/counterfeitcords/',get_city_cords),
     path('api/counterfeitlist/citycount/',get_count_by_city),
-
-
+    path('api/updateproductscan/add/',add_scan_info),
+    path('api/tackproduct/track/',get_product_status),
 
 ]

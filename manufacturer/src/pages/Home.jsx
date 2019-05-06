@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import HeaderTemplate from '../components/HeaderTemplate'
 import SpaceBlock from '../components/SpaceBlock'
 import Login from '../components/Login'
 import '../components/components.css'
-import AddProduct from '../components/AddProduct'
+import AddProduct from './AddProduct'
 import LocationCords from '../components/LocationCords'
 
 export default class Home extends Component {
   constructor() {
     super();
-    this.renderAddProduct = this.renderAddProduct.bind(this);
+
   }
 
-  renderAddProduct() {
-    ReactDOM.render(<AddProduct />, document.getElementById('root'));
-  }
+
   render() {
     if (sessionStorage.getItem('login') === 'success') {
       return (
@@ -46,9 +45,16 @@ export default class Home extends Component {
               </p>
               <br /><br />
               &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-              <a class="button is-info is-rounded" onClick={this.renderAddProduct} >Add Product</a>
+              <a class="button is-info is-rounded" >
+                <Link to={'/addproduct'}><p style={{ color: "#FFFFFF" }}>Add Product</p></Link>
+              </a>
               &nbsp; &nbsp; &nbsp; &nbsp;
-              
+
+              <a href="/viewproducts" class="button is-info is-rounded" >
+                <Link to={'/viewproducts'}><p style={{ color: "#FFFFFF" }}>Track Product</p></Link>
+              </a>
+              &nbsp; &nbsp; &nbsp; &nbsp;
+
               <br /><br /><br />
             </div>
           </div>
@@ -58,7 +64,7 @@ export default class Home extends Component {
     else {
       return (
         <div>
-         <Login />
+          <Login />
         </div>
       );
     }
