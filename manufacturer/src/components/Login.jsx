@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import SpaceBlock from '../components/SpaceBlock'
 import Constants from '../Constants'
 import HeaderTemplate from '../components/HeaderTemplate'
+import factorylogo from '../assets/factory-1.gif'
 import './components.css'
+
 
 export default class Login extends Component {
     constructor(){
@@ -28,20 +30,30 @@ export default class Login extends Component {
         var pwd=this.state.password
         var user=this.state.userid
         var data={'user':user ,'password':pwd}
-        fetch(DOMAIN_URL+PASSWORD_CHECK,{
+        
+        
+        console.log(DOMAIN_URL,PASSWORD_CHECK , data)
+
+        fetch(DOMAIN_URL+PASSWORD_CHECK, {
             method:'POST',
-            body:JSON.stringify(data)
-        })
-        .then((data)=>data.json())
-        .then((json)=>{
-            console.log(json.status)
-            if(json.status===true){
+            body:JSON.stringify(data),
+            mode: 'cors',
+            headers: { 
+                'Content-Type': 'application/json',
+                "Accept": 'application/json',
+         }
+        }).then((data)=> data.json())
+        .then((res)=>{
+            console.log(res)
+            console.log(res.status)
+            if(res.status===true){
                 sessionStorage.setItem('login','success')
+                sessionStorage.setItem('username',this.state.userid)
+                sessionStorage.setItem('secret',res.secret)
                 window.location.reload(1)
-                sessionStorage.setItem('secret',json.secret)
             }
         })
-        .catch((err)=>console.log(err))
+        .catch(function(err) {console.log("ERROR ", err)})
     }
 
   render() {
@@ -52,18 +64,25 @@ export default class Login extends Component {
         <SpaceBlock />
        <div class="columns">
             <div class="column">
-                <div class="card">
+                <div >
                     <div class="columns">
                     <div class="column">
-                        <img src="https://cdn.dribbble.com/users/1221795/screenshots/5127790/main-gif-drrible.gif" 
-                            width="80%"
-                            height="80%"
+                    <div style={{padding: "40px"}}>
+                    <img src={factorylogo}
+                            width="90%"
+                            height="90%"
                         />
                     </div>
-                    <div class="cloumn">
+                    </div>
+                    <div class="column color_gray padding" >
+                    <br></br>
                         <p class="color_gray">
-                            Welcome to smart Chain manufacturer portal <br/>
-                            Welcome to smart Chain manufacturer portal
+                            <tab1>
+                            A Smart portal to add new product to blockchain
+                            DB and  also  track  product  location  details. 
+                            This portal  provides simple interface to 
+                            interact with  the backend server
+                            </tab1>
                         </p>
                     </div> 
                     </div>
@@ -72,7 +91,7 @@ export default class Login extends Component {
             </div>
             <div class="column">
 
-            <div class="card">
+            <div >
             <SpaceBlock />
             <center>
             <div style={{width:'50%'}}>
@@ -91,7 +110,6 @@ export default class Login extends Component {
             </div>
             </div>
             </center>
-            <SpaceBlock />
             <SpaceBlock />
             </div>
             </div>

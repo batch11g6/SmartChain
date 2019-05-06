@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import logo from '../assets/smartchain.jpg'
+import './components.css'
 
 
 export default class HeaderTemplate extends Component {
@@ -11,12 +12,14 @@ export default class HeaderTemplate extends Component {
     handleLogout(){
         sessionStorage.removeItem('login')
         sessionStorage.removeItem('secret')
+        sessionStorage.removeItem('username')
+        sessionStorage.removeItem('loginupdate')
         window.location.reload(1)
     }
     render() {
         return (
-            <div>
-                <nav class="navbar is-transparent">
+            <div class="sticky">
+                <nav class="navbar is-transparent ">
                     <div class="navbar-brand">
                         <a class="navbar-item" href="https://github.com/batch11g6/SmartChain">
                             <img src={logo} alt="Smart Chain" width="52" height="58" />
@@ -38,8 +41,8 @@ export default class HeaderTemplate extends Component {
 
                                         </span>
                                         <span>
-                                            <a href="%PUBLIC_URL%/" >
-                                                <Link to={'/'}>Home</Link>
+                                            <a href="/" >
+                                                <Link to={'/home'}>Home</Link>
                                             </a>
                                         </span>
                                     </a>
@@ -51,21 +54,46 @@ export default class HeaderTemplate extends Component {
 
                                         </span>
                                         <span>
-                                            <a href="%PUBLIC_URL%/about" >
+                                            <a href="/update" >
+                                                <Link to={'/update'}>Update</Link>
+                                            </a>
+                                        </span>
+                                    </a>
+                                </p>
+                                <p class="control">
+                                    <a class=" ">
+                                        <span class="icon">
+
+                                        </span>
+                                        <span>
+                                            <a href="/"  onClick={this.handleLogout}>
+                                                <Link to={'/'}>Logout</Link>
+                                            </a>
+                                        </span>
+                                    </a>
+                                </p>
+                                <p class="control">
+                                    <a class=" ">
+                                        <span class="icon">
+
+                                        </span>
+                                        <span>
+                                            <a href="/about" >
                                                 <Link to={'/about'}>About</Link>
                                             </a>
                                         </span>
                                     </a>
                                 </p>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <p class="control">
                                     <a class=" ">
                                         <span class="icon">
-
-                                        </span>
-                                        <span>
-                                            <a href="%PUBLIC_URL%/"  onClick={this.handleLogout}>
-                                                <Link to={'/'}>Logout</Link>
-                                            </a>
+                                        <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-group-512.png"
+                                            width="120%"
+                                        />
+                                        </span>&nbsp;&nbsp;
+                                        <span style={{color: "#FF500d"}}>
+                                            {sessionStorage.getItem('username')}
                                         </span>
                                     </a>
                                 </p>

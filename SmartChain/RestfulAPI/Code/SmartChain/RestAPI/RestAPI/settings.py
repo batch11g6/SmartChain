@@ -52,20 +52,26 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
-#CORS_ORIGIN_ALLOW_ALL=True
+CORS_ORIGIN_ALLOW_ALL=True
 
 #  Only these domains are allowed
 CORS_ORIGIN_WHITELIST = (
     'my-project-1506183410578.firebaseapp.com',
     'smartchainbatch11.firebaseapp.com',
-    'localhost:3000'
+    'manufacturerbatch11g6.firebaseapp.com'
+    'localhost:3000',
+    '192.168.43.241:5000',
+    '127.0.0.1:3000'
 )
 
 
 ALLOWED_HOSTS = [
     'localhost',
     'my-project-1506183410578.firebaseapp.com',
-    'smartchainbatch11.firebaseapp.com'
+    'smartchainbatch11.firebaseapp.com',
+    'manufacturerbatch11g6.firebaseapp.com',
+    '192.168.43.241',
+    '127.0.0.1'
 ]
 
 
