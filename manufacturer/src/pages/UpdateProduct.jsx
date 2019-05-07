@@ -4,7 +4,7 @@ import HeaderTemplate from '../components/HeaderTemplate'
 import Constants from '../Constants'
 import UpdateProductDetails from '../components/UpdateProductDetails'
 import '../components/components.css'
-import factorylogo from '../assets/factory-1.gif'
+import gepezet from '../assets/gepezet.gif'
 
 
 export default class UpdateProduct extends Component {
@@ -48,6 +48,7 @@ export default class UpdateProduct extends Component {
                     sessionStorage.setItem('loginupdate', 'success')
                     sessionStorage.setItem('secret', json.secret)
                     sessionStorage.setItem('username', this.state.userid)
+                    window.location.reload(1)
                 }
             })
             .catch((err) => console.log(err))
@@ -71,15 +72,17 @@ export default class UpdateProduct extends Component {
                     <div class="columns">
                     <div class="column">
                     <div style={{padding: "40px"}}>
-                    <img src={factorylogo}
-                            width="90%"
-                            height="90%"
+                    <img src={gepezet}
+                            width="180%"
+                            height="180%"
                         />
                     </div>
                     </div>
                     <div class="column color_gray padding" >
                     <br></br>
                         <p class="color_gray">
+                        <center><h1>Product Tracking</h1></center>
+                        <br /><br />
                             <tab1>
                                 A smart portal to update and track products.
                                 The authorized person uses this portal to scan 

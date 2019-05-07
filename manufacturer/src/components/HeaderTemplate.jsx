@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import logo from '../assets/smartchain.jpg'
+import userlogo from '../assets/user-group.png'
 import './components.css'
 
 
@@ -18,8 +19,9 @@ export default class HeaderTemplate extends Component {
     }
     render() {
         return (
-            <div class="sticky">
-                <nav class="navbar is-transparent ">
+            <div class="sticky ">
+                <nav class="navbar is-light ">
+
                     <div class="navbar-brand">
                         <a class="navbar-item" href="https://github.com/batch11g6/SmartChain">
                             <img src={logo} alt="Smart Chain" width="52" height="58" />
@@ -88,7 +90,7 @@ export default class HeaderTemplate extends Component {
                                 <p class="control">
                                     <a class=" ">
                                         <span class="icon">
-                                        <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-group-512.png"
+                                        <img src={userlogo}
                                             width="120%"
                                         />
                                         </span>&nbsp;&nbsp;
