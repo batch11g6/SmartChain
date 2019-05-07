@@ -88,7 +88,12 @@ class Dashboard extends React.Component {
 
       fetch(DOMAIN_URL + VALIDITY_API_PATH, {
         method: 'POST',
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        mode: 'cors',
+            headers: { 
+                'Content-Type': 'application/json',
+                "Accept": 'application/json',
+         }
       }).then((data) => data.json())
         .then((json) => {
           console.log("json.isPresent", json.isPresent);

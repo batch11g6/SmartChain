@@ -1,1 +1,0 @@
-export const FETCH_DETAILS='FETCH_DETAILS'

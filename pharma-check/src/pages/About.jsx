@@ -17,6 +17,7 @@ export default class About extends Component {
     return (
       <div>
         <HeaderTemplate />
+        <div class="card"></div>
         <SpaceBlock />
 
         <div class="columns">
@@ -67,7 +68,7 @@ export default class About extends Component {
 
                   </table>
                 </div>
-                <a class="button is-link is-rounded" onClick={this.handleGithubClick}>GitHub</a>
+                <a class="button is-info is-rounded" onClick={this.handleGithubClick}>GitHub</a>
               </div>
             </div>
 

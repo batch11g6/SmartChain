@@ -7,8 +7,9 @@ export default class Reports extends Component {
     return (
       <div>
           <HeaderTemplate/>
-            {sessionStorage.getItem('long')}<br/>
-            {sessionStorage.getItem('lat')}
+          <div class="card"></div>
+          <br />
+          
       </div>
     )
   }

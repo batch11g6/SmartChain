@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
 import { Router, Route, Switch } from "react-router-dom";
+import About from './views/About/About'
 
 import "bootstrap/dist/css/bootstrap.css";
 import "assets/scss/paper-dashboard.scss";
@@ -17,6 +18,7 @@ ReactDOM.render(
       {indexRoutes.map((prop, key) => {
         return <Route path={prop.path} key={key} component={prop.component} />;
       })}
+      <Route component={About} />
     </Switch>
   </Router>,
   document.getElementById("root")

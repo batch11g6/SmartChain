@@ -13,6 +13,7 @@ from .API.ProductReport.counterfeit_list import get_counterfeit_list
 from .API.ProductReport.counterfeit_cords import get_city_cords
 from .API.ReportOfCity.report_of_city import get_count_by_city
 from .API.PasswordAuth.validate_manufacturer import validate_manufacturer
+from .API.PasswordAuth.validate_pharma import validate_pharma
 from .API.UpdateProductScan.add_productscan_info import add_scan_info
 from .API.UpdateProductScan.trace_product import get_product_status
 
@@ -23,6 +24,7 @@ urlpatterns = [
     path('api/productdetails/collectdetails/', details_collector),
     path('api/productdetails/getdetails', get_product_information),
     path('api/validateManufacturer/validate/',validate_manufacturer),
+    path('api/validatepharma/validate/', validate_pharma),
 
     path('api/product/isvaild/', check_validity),
     path('api/validityproduct/pharmavalidity/', pharma_validity),

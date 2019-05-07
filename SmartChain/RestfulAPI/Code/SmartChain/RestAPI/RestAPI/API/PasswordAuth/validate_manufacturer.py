@@ -20,5 +20,5 @@ def validate_manufacturer(request):
     print('login status', status)
     key=default_constant_values.JWT_256_BIT_KEY
     print({'status':status, 'secret': key})
-    return JsonResponse({'status':status, 'secret': key}, content_type="text/json")
+    return JsonResponse({'status':status, 'secret': key})
     

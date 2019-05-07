@@ -125,3 +125,23 @@ h1 {
     border-width: 1px;
   }
 }
+
+.nav_bar_height{
+  height: 50px;
+}
+
+tab1{
+  padding-left:4em ;
+  line-height: 26pt;
+  font-size: 18px;
+  padding-right: 5em;
+}
+.padding{
+  margin: 20px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.input_width{
+  width: 78%;
+}

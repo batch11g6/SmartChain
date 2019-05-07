@@ -1,19 +1,13 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import HeaderTemplate from '../components/HeaderTemplate'
 import SpaceBlock from '../components/SpaceBlock'
 import Login from '../components/Login'
 import '../components/components.css'
-import AddProduct from './AddProduct'
 import LocationCords from '../components/LocationCords'
+import pcori_animation_revised from '../assets/pcori_animation_revised-copy.gif'
 
 export default class Home extends Component {
-  constructor() {
-    super();
-
-  }
-
 
   render() {
     if (sessionStorage.getItem('login') === 'success') {
@@ -26,7 +20,7 @@ export default class Home extends Component {
           <div class="columns">
             <div class="column">
               <div>
-                <img src="https://cdn.dribbble.com/users/869641/screenshots/4528277/pcori_animation_revised-copy.gif"
+                <img src={pcori_animation_revised}
                   height="200%"
                 />
               </div>

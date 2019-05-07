@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import SpaceBlock from './SpaceBlock'
+import './components.css'
+var facts =require('../assets/content/facts.json')
+
 
 export default class LoadingAnimation extends Component {
     constructor(){
@@ -26,11 +29,19 @@ export default class LoadingAnimation extends Component {
     return (
       <div>
           <SpaceBlock />
-        <center><h2>{this.state.messages[Math.floor(Math.random() * (13) + 1)]}</h2></center>
-       <center>
-            <img src="https://cdn.dribbble.com/users/614270/screenshots/6388141/appbuild_drib02.gif"
+        <center><h1>{this.state.messages[Math.floor(Math.random() * (13) + 1)]}</h1></center>
+       <div class="columns">
+        <div class="column">
+        <img src="https://cdn.dribbble.com/users/614270/screenshots/6388141/appbuild_drib02.gif"
             />
-       </center>
+        </div>
+        <div class="column">
+        <br></br><br></br>
+        <div class="color_gray padding">
+                <p class="color_gray "><tab1>{facts[Math.floor(Math.random() * (5) + 1)]}</tab1></p>
+            </div>
+        </div>
+       </div>
       </div>
     )
   }
