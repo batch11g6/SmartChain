@@ -6,11 +6,11 @@ import './components.css'
 
 
 export default class HeaderTemplate extends Component {
-    constructor(){
+    constructor() {
         super()
-        this.handleLogout= this.handleLogout.bind(this)
+        this.handleLogout = this.handleLogout.bind(this)
     }
-    handleLogout(){
+    handleLogout() {
         sessionStorage.removeItem('login')
         sessionStorage.removeItem('secret')
         sessionStorage.removeItem('username')
@@ -68,7 +68,7 @@ export default class HeaderTemplate extends Component {
 
                                         </span>
                                         <span>
-                                            <a href="/"  onClick={this.handleLogout}>
+                                            <a href="/" onClick={this.handleLogout}>
                                                 <Link to={'/'}>Logout</Link>
                                             </a>
                                         </span>
@@ -90,17 +90,17 @@ export default class HeaderTemplate extends Component {
                                 <p class="control">
                                     <a class=" ">
                                         <span class="icon">
-                                        <img src={userlogo}
-                                            width="120%"
-                                        />
+                                            <img src={userlogo}
+                                                width="120%"
+                                            />
                                         </span>&nbsp;&nbsp;
-                                        <span style={{color: "#FF500d"}}>
+                                        <span style={{ color: "#FF500d" }}>
                                             {sessionStorage.getItem('username')}
                                         </span>
                                     </a>
                                 </p>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </div>
+                            </div>
                         </div>
                     </div>
                 </nav>

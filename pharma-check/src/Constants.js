@@ -7,7 +7,7 @@
  */
 
 export default {
-    DOMAIN_URL:'http://127.0.0.1:8000/',
+    DOMAIN_URL:'https://batch11smartchain.herokuapp.com/',
 
     PAHRMA_LOGIN: 'api/validatepharma/validate/',
     VALIDITY_API_PATH : 'api/product/isvaild/',

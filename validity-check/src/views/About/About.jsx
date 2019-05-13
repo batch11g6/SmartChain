@@ -1,6 +1,9 @@
 import React from "react";
 import { Card, CardHeader, CardBody, CardTitle, CardFooter, Row, Col } from "reactstrap";
 import Button from "../../components/CustomButton/CustomButton";
+import scanGif from '../../assets/img/main-gif-drrible.gif'
+import rightArrow from '../../assets/img/arrow.png'
+import greenCheck from '../../assets/img/green-check.gif'
 import './about.css'
 
 
@@ -26,16 +29,16 @@ class User extends React.Component {
                  </tab1>
                  </p>
                  <tab2></tab2>
-                 <img src="https://cdn.dribbble.com/users/1221795/screenshots/5127790/main-gif-drrible.gif"
+                 <img src={scanGif}
                  width="30%"
                  height="20%"
                  />
                   <tab2></tab2>
-                 <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c444.png"
+                 <img src={rightArrow}
                  width="10%"
                  />
                   <tab2></tab2>
-                  <img src="https://cdn.dribbble.com/users/900431/screenshots/2346622/green-check.gif"
+                  <img src={greenCheck}
                   width="20%"
                   />
               </CardBody>
