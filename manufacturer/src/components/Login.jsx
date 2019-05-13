@@ -31,9 +31,6 @@ export default class Login extends Component {
         var user = this.state.userid
         var data = { 'user': user, 'password': pwd }
 
-
-        console.log(DOMAIN_URL, PASSWORD_CHECK, data)
-
         fetch(DOMAIN_URL + PASSWORD_CHECK, {
             method: 'POST',
             body: JSON.stringify(data),

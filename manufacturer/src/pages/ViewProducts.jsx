@@ -7,6 +7,8 @@ import Constants from '../Constants'
 import './pageviews.css'
 
 var lat_longs = []
+var dummy=[[19.0760, 72.8777], [17.3850, 78.4867], [12.9716, 77.5946]]
+
 
 export default class ViewProducts extends Component {
     constructor() {
@@ -15,6 +17,8 @@ export default class ViewProducts extends Component {
             width: 500,
             tag: [],
             packageID: '',
+            loactioncords:[],
+            AntPathTag:'',
         }
         this.handlePackageIDChange = this.handlePackageIDChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -45,8 +49,8 @@ export default class ViewProducts extends Component {
                 console.log(result.product_update)
                 result.product_update.map((element, item) => {
                     var cords = [parseFloat(element.lat), parseFloat(element.long)]
-                    lat_longs.push([parseFloat(element.lat), parseFloat(element.long)])
-                    console.log(cords)
+                    this.state.loactioncords.push(cords)
+            
                     var date = Date(parseFloat(element.timestamp))
 
                     this.setState({
@@ -55,6 +59,7 @@ export default class ViewProducts extends Component {
                         </Marker>)
                     })
                 })
+                this.setState({AntPathTag:<AntPath positions={this.state.loactioncords} />})
             })
             .catch((err) => console.log(err))
     }
@@ -84,7 +89,7 @@ export default class ViewProducts extends Component {
                         <center>
                             <div class="field">
                                 <div class="control" style={{margin: "15px"}} >
-                                    <input style={{width:"70%"}} class="input is-info" type="text" placeholder="Package ID" value={this.state.packageID} onChange={this.handlePackageIDChange} />
+                                    <input style={{width:"70%"}} class="input is-info " type="text" placeholder="Package ID" value={this.state.packageID} onChange={this.handlePackageIDChange} />
                                     &nbsp;&nbsp;&nbsp;
                                     <button class="button is-info is-rounded" onClick={this.handleSubmit}>Submit</button>
                             
@@ -94,7 +99,7 @@ export default class ViewProducts extends Component {
                         </center>
                     </div>
                     <div>
-                        <div class="leaflet-container">
+                        <div class=" leaflet-container">
                             <Map
                                 center={position}
                                 zoom={5}
@@ -110,9 +115,11 @@ export default class ViewProducts extends Component {
                                     url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
                                 />
 
-                                {console.log(this.state.tag)}
                                 {this.state.tag}
-                                <AntPath positions={[[19.0760, 72.8777], [17.3850, 78.4867], [12.9716, 77.5946]]} />
+                               {/** The Antpath should mount after fetch so the tag is stored in state then
+                                rendered 
+                            */}
+                                {this.state.AntPathTag}
                             </Map>
                         </div>
                     </div>

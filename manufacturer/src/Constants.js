@@ -3,7 +3,7 @@
 // https://batch11smartchain.herokuapp.com/    (group11 account)
 
 export default {
-    DOMAIN_URL: 'http://127.0.0.1:8000/',
+    DOMAIN_URL: 'https://batch11smartchain.herokuapp.com/',
 
     PASSWORD_CHECK: 'api/validateManufacturer/validate/',
     ADD_PRODUCT: 'api/productdetails/collectdetails/',
