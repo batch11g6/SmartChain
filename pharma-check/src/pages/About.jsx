@@ -26,7 +26,8 @@ export default class About extends Component {
           </div>
           <div class="column">
 
-            <div class="card">
+            <section>
+            <div class="">
               <header class="card-header">
                 <h4 class="card-header-title color_gray">
                   Smart Chain
@@ -72,6 +73,7 @@ export default class About extends Component {
               </div>
             </div>
 
+            </section>
           </div>
           <div class="column">
             {/** Empty column for space */}

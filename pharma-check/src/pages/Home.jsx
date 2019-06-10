@@ -5,6 +5,8 @@ import LocationCords from '../components/LocationCords'
 import Login from '../components/Login'
 import SpaceBlock from '../components/SpaceBlock';
 
+import '../components/components.css'
+
 
 export default class Home extends Component {
   render() {
