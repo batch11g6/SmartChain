@@ -13,8 +13,6 @@ def test_conn():
     return jsonify({"status":True,
     "code":'https://github.com/batch11g6/SmartChain',
     "time": str(time.ctime()),
-    "host":socket.gethostname() ,
-    "ip": socket.gethostbyname(socket.gethostname()) ,
     "uptime": str((time.time() - psutil.boot_time())%60)+" mins"
     })
 
@@ -47,4 +45,4 @@ def set_product_info():
     return jsonify({"hash":hash_value})
 
 
-app.run(port=8087, debug=True)
+app.run(port=8087, debug=True, ssl_context=('cert.pem', 'key.pem'))
