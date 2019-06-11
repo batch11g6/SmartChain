@@ -71,13 +71,18 @@ export default class UpdateProductDetails extends Component {
                 <HeaderTemplate />
                 {this.state.successcard}
                 <div class="card"></div>
-                <QrReader
-                    delay={this.state.delay}
-                    style={previewStyle}
-                    onError={this.handleError}
-                    onScan={this.handleScan}
-                    facingMode="rear"
-                />
+                <div class="columns">
+                    <div class="card">
+                        <QrReader
+                            delay={this.state.delay}
+                            style={previewStyle}
+                            onError={this.handleError}
+                            onScan={this.handleScan}
+                            facingMode="rear"
+                        />
+                    </div>
+                   
+                </div>
                 Package ID: {this.state.result}
             </div>
         )

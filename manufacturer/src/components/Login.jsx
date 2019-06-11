@@ -90,7 +90,7 @@ export default class Login extends Component {
 
                         <div >
                             <SpaceBlock />
-                            <center>
+                            <center class="scale_image">
                                 <div style={{ width: '50%' }}>
                                     <div class="field">
                                         <div class="control">
@@ -102,7 +102,7 @@ export default class Login extends Component {
                                             <input class="input is-info" type="password" placeholder="Password" onChange={this.handlePasswordChange} />
                                         </div>
                                     </div>
-                                    <div class="control">
+                                    <div class="control ">
                                         <button class="button is-info is-rounded" onClick={this.handleSubmit}>Submit</button>
                                     </div>
                                 </div>

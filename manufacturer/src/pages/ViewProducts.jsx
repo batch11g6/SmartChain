@@ -91,7 +91,7 @@ export default class ViewProducts extends Component {
                                 <div class="control" style={{margin: "15px"}} >
                                     <input style={{width:"70%"}} class="input is-info " type="text" placeholder="Package ID" value={this.state.packageID} onChange={this.handlePackageIDChange} />
                                     &nbsp;&nbsp;&nbsp;
-                                    <button class="button is-info is-rounded" onClick={this.handleSubmit}>Submit</button>
+                                    <button class="button is-info is-rounded button_hover" onClick={this.handleSubmit}>Submit</button>
                             
                                 </div>
                             </div>
@@ -99,7 +99,7 @@ export default class ViewProducts extends Component {
                         </center>
                     </div>
                     <div>
-                        <div class=" leaflet-container">
+                        <div class=" leaflet-container scale_image">
                             <Map
                                 center={position}
                                 zoom={5}
