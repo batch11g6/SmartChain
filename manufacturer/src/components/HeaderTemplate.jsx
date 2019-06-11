@@ -19,7 +19,7 @@ export default class HeaderTemplate extends Component {
     }
     render() {
         return (
-            <div class="sticky ">
+            <div class="sticky header_template">
                 <nav class="navbar is-light ">
 
                     <div class="navbar-brand">
@@ -42,7 +42,7 @@ export default class HeaderTemplate extends Component {
                                         <span class="icon">
 
                                         </span>
-                                        <span>
+                                        <span class="nav_button_hover">
                                             <a href="/" >
                                                 <Link to={'/home'}>Home</Link>
                                             </a>
@@ -55,7 +55,7 @@ export default class HeaderTemplate extends Component {
                                         <span class="icon">
 
                                         </span>
-                                        <span>
+                                        <span class="nav_button_hover">
                                             <a href="/update" >
                                                 <Link to={'/update'}>Update</Link>
                                             </a>
@@ -67,7 +67,7 @@ export default class HeaderTemplate extends Component {
                                         <span class="icon">
 
                                         </span>
-                                        <span>
+                                        <span class="nav_button_hover">
                                             <a href="/" onClick={this.handleLogout}>
                                                 <Link to={'/'}>Logout</Link>
                                             </a>
@@ -79,7 +79,7 @@ export default class HeaderTemplate extends Component {
                                         <span class="icon">
 
                                         </span>
-                                        <span>
+                                        <span class="nav_button_hover">
                                             <a href="/about" >
                                                 <Link to={'/about'}>About</Link>
                                             </a>

@@ -130,7 +130,7 @@ export default class AddProduct extends Component {
                     <center><h1 class="color_gray">Enter the Product details</h1></center>
                     <div class="columns">
                         <div class="column">
-                            <div>
+                            <div class="scale_image">
                                 <img src="https://cdn.dribbble.com/users/869641/screenshots/4528277/pcori_animation_revised-copy.gif"
                                     height="200%"
                                 />
@@ -186,9 +186,9 @@ export default class AddProduct extends Component {
                                 </div>
                                 <br />
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a class="button is-info is-rounded" onClick={this.handleSubmit}>Add Product</a>
+                                <a class="button is-info is-rounded button_hover" onClick={this.handleSubmit}>Add Product</a>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a class="button is-info is-rounded" onClick={this.handleClear}>Clear Details</a>
+                                <a class="button is-info is-rounded button_hover" onClick={this.handleClear}>Clear Details</a>
                             </div>
                         </div>
                     </div>

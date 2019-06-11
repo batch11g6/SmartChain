@@ -39,12 +39,12 @@ export default class Home extends Component {
               </p>
               <br /><br />
               &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-              <a class="button is-info is-rounded" >
+              <a class="button is-info is-rounded button_hover" >
                 <Link to={'/addproduct'}><p style={{ color: "#FFFFFF" }}>Add Product</p></Link>
               </a>
               &nbsp; &nbsp; &nbsp; &nbsp;
 
-              <a href="/viewproducts" class="button is-info is-rounded" >
+              <a href="/viewproducts" class="button is-info is-rounded button_hover" >
                 <Link to={'/viewproducts'}><p style={{ color: "#FFFFFF" }}>Track Product</p></Link>
               </a>
               &nbsp; &nbsp; &nbsp; &nbsp;

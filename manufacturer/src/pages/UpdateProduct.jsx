@@ -94,7 +94,7 @@ export default class UpdateProduct extends Component {
                         <div class="column">
                             <div>
                                 <SpaceBlock />
-                                <center>
+                                <center class="scale_image">
                                     <div style={{ width: '50%' }}>
                                         <div class="field">
                                             <div class="control">
@@ -107,7 +107,7 @@ export default class UpdateProduct extends Component {
                                             </div>
                                         </div>
                                         <div class="control">
-                                            <button class="button is-info is-rounded" onClick={this.handleSubmit}>Submit</button>
+                                            <button class="button is-info is-rounded button_hover" onClick={this.handleSubmit}>Submit</button>
                                         </div>
                                     </div>
                                 </center>
