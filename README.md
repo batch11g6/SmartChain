@@ -12,4 +12,9 @@ Phaneendra A R | 1KS15CS002    |
 
 We weekly update our progress on blogspot:
 https://cdi11.blogspot.com/
+### Architecture Diagram
+![Architecture Diagram](Finalyear.png)
+
+###Flow Diagram
+![Flow Diagram](FlowDiagram.png)
 
