@@ -55,7 +55,7 @@ export default class ViewProducts extends Component {
 
                     this.setState({
                         tag: this.state.tag.concat(<Marker position={cords}>
-                            <Popup><p style={{ color: "#00F0FF" }}>{item}</p>{date}</Popup>
+                            <Popup><p style={{ color: "#4169e1" }}>{item+1}</p>{date}</Popup>
                         </Marker>)
                     })
                 })

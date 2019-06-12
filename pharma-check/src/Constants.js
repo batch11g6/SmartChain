@@ -3,7 +3,7 @@
 // http://127.0.0.1:8000/
 
 /**
- * Backend Domain URL 
+ * Backend Domain URL  api/product/isvaild/
  */
 
 export default {

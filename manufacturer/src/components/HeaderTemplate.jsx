@@ -20,7 +20,7 @@ export default class HeaderTemplate extends Component {
     render() {
         return (
             <div class="sticky header_template">
-                <nav class="navbar is-light ">
+                <nav class="navbar  ">
 
                     <div class="navbar-brand">
                         <a class="navbar-item" href="https://github.com/batch11g6/SmartChain">

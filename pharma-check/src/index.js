@@ -5,7 +5,6 @@ import * as serviceWorker from './serviceWorker';
 import registerServiceWorker from './registerServiceWorker';
 import Home from './pages/Home'
 import About from './pages/About'
-import Reports from './pages/Reports'
 import Page404 from './pages/Page404'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'react-notifications/lib/notifications.css';
@@ -15,8 +14,9 @@ ReactDOM.render(
 <Router>
     <Switch>
           <Route exact path='/' component={Home} />
+          <Route exact path='/home' component={Home} />
           <Route path='/about' component={About} />
-          <Route component={Page404}/>
+          <Route component={Page404} />
     </Switch>
 </Router>, document.getElementById('root'));
 

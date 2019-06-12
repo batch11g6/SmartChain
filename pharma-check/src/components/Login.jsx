@@ -108,8 +108,8 @@ export default class Login extends Component {
                                             <input class="input is-info" type="password" placeholder="Password" onChange={this.handlePasswordChange} />
                                         </div>
                                     </div>
-                                    <div class="control">
-                                        <button class="button is-info is-rounded" onClick={this.handleSubmit}>Login</button>
+                                    <div class="control ">
+                                        <button class="button is-info is-rounded button_hover" onClick={this.handleSubmit}>Login</button>
                                     </div>
                                 </div>
                             </center>

@@ -51,25 +51,25 @@ export default class About extends Component {
                       <th>USN</th>
                     </thead>
                     <tr>
-                      <td><a href="https://github.com/dm212">Yashwanth D M</a></td>
+                      <td><a class="button_hover" href="https://github.com/dm212">Yashwanth D M</a></td>
                       <td>1KS15CS123</td>
                     </tr>
                     <tr>
-                      <td><a href="https://github.com/Phaneendra97">Phaneendra A R</a></td>
+                      <td><a class="button_hover" href="https://github.com/Phaneendra97">Phaneendra A R</a></td>
                       <td>1KS15CS002</td>
                     </tr>
                     <tr>
-                      <td><a href="https://github.com/Mayurakr">Mayura K R</a></td>
+                      <td><a class="button_hover" href="https://github.com/Mayurakr">Mayura K R</a></td>
                       <td>1KS15CS056</td>
                     </tr>
                     <tr>
-                      <td><a href="https://github.com/NikilMunireddy">Nikil M</a></td>
+                      <td><a class="button_hover" href="https://github.com/NikilMunireddy">Nikil M</a></td>
                       <td>1KS15CS066</td>
                     </tr>
 
                   </table>
                 </div>
-                <a class="button is-info is-rounded" onClick={this.handleGithubClick}>GitHub</a>
+                <a class="button is-info is-rounded button_hover" onClick={this.handleGithubClick}>GitHub</a>
               </div>
             </div>
 
