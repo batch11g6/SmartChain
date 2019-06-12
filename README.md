@@ -12,6 +12,19 @@ Phaneendra A R | 1KS15CS002    |
 
 We weekly update our progress on blogspot:
 https://cdi11.blogspot.com/  
+## Docker Image 
+
+Pull Docker image  
+```
+ $ docker pull nikilm/smartchain:tagname
+```  
+
+Run Docker image
+```
+ $ sudo docker-compose nikilm/smartchain run python manage.py runserver <ip-address>:8000
+```  
+
+
 ## Architecture Diagram
 ![Architecture Diagram](Finalyear.png)  
 
