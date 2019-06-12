@@ -25,7 +25,8 @@ class Scanner extends Component {
       displayMessage: "Scan the QR code by placing the product QR code in front of the camera",
       dialogColor: 'gray',
       productDetails: {},
-      loadingstatus: "",
+      loadingstatus: '',
+      isExpired:false,
     }
     // https://dribbble.com/shots/3576821-Scan-and-Climb
     this.handleScan = this.handleScan.bind(this);
@@ -56,7 +57,7 @@ class Scanner extends Component {
     }
 
 
-    const { DOMAIN_URL, PHARMA_CHECK_PATH_URL } = Constants
+    const { DOMAIN_URL, PHARMA_CHECK_PATH_URL, VALIDITY_API_PATH } = Constants
     {/*
       Check the length of string  like "this.state.result.length === 64"  
       so that the unwanted strings  reaching server can be avoided
@@ -81,15 +82,40 @@ class Scanner extends Component {
           this.setState({
             isPresent: json.isPresent,
             details: json.details,
-            productDetails: json.data.data
+            productDetails: json.data.data, 
+            loadingstatus:' ',
           })
-          if (json.isPresent === true) {
+          var expiry=json.data.data.expirydate
+          var yyyy=expiry.split('-')[2]
+          var yyyymmdd=yyyy.concat('-',expiry.split('-')[1],'-',expiry.split('-')[0])
+          var unixExpiryTime=parseInt(new Date(yyyymmdd).getTime()/1000)
+          var unixNowTime=parseInt(new Date().getTime()/1000)
+
+          if( unixExpiryTime >= unixNowTime ){
+            this.setState({isExpired: false})
+            console.log('Not expired')
+          }
+          else{
+            this.setState({isExpired:true})
+            console.log('Expired')
+          }
+          var  isItexpired= this.state.isExpired;
+
+          if(isItexpired){
+            this.setState({
+              statusUrl: warningGIF,
+              displayMessage: 'The product is Expired, it is adviced not to use this product',
+              isPresent: json.isPresent,
+              dialogColor: 'red',
+            })
+          }
+
+          else if (json.isPresent === true) {
             this.setState({
               statusUrl: greencheck,
               displayMessage: 'The product is authenticated. It is a valid product and safe to use',
               isPresent: json.isPresent,
               dialogColor: 'green',
-              loadingstatus: '',
             })
           }
 
@@ -99,16 +125,14 @@ class Scanner extends Component {
               displayMessage: 'The product seems to be counterfeit it is adviced not to use this product',
               isPresent: json.isPresent,
               dialogColor: 'orange',
-              loadingstatus: '',
             })
           }
 
           else {  // Default display GIF
             this.setState({
               statusUrl: defaultGif,
-              dialogColor: 'black',
+              dialogColor: 'gray',
               displayMessage: "Scan the QR code by placing the product QR code in front of the camera",
-              loadingstatus: '',
             })
           }
         })
@@ -145,6 +169,7 @@ class Scanner extends Component {
     return (
 
       <div class="columns">
+         {this.state.loadingstatus}
         {/**First column */}
         <div class="column">
           <section>
@@ -181,7 +206,7 @@ class Scanner extends Component {
                       <td>{this.state.details}</td>
                     </tr>
                   </table>
-                  {this.state.loadingstatus}
+
 
                 </div>
               </div>

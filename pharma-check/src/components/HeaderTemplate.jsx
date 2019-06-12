@@ -43,7 +43,7 @@ export default class HeaderTemplate extends Component {
 
                     </span>
                     <span>
-                        <a href="/" >
+                        <a class="button_hover" href="/" >
                             <Link to={'/'}>Home</Link>
                         </a>
                     </span>
@@ -57,7 +57,7 @@ export default class HeaderTemplate extends Component {
 
                     </span>
                     <span>
-                        <a href="/about" >
+                        <a class="button_hover" href="/about" >
                             <Link to={'/about'}>About</Link>
                         </a>
                     </span>
@@ -69,7 +69,7 @@ export default class HeaderTemplate extends Component {
 
                     </span>
                     <span>
-                        <a href="/"  onClick={this.handleLogout}>
+                        <a class="button_hover" href="/"  onClick={this.handleLogout}>
                             <Link to={'/'}>Logout</Link>
                         </a>
                     </span>
@@ -77,7 +77,7 @@ export default class HeaderTemplate extends Component {
             </p>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <p class="control">
-                <a class=" ">
+                <a class="button_hover" class=" ">
                     <span class="icon">
                         <img src={userlogo}
                             width="120%"

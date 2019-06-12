@@ -1,8 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 @import url('https://fonts.googleapis.com/css?family=Questrial');
+
 /*
 For computers
 */
+body{
+  margin:0%;
+  padding:0%;
+  width:100vw;
+  background:var(--bg-color);
+  color:var(--text-color);
+  max-width:100vw;
+  overflow-x:hidden;
+  align-items:center;
+  font-family: 'Poppins', sans-serif;
+}
+
 
 @media screen and (min-width: 600px) {
 
@@ -127,6 +140,11 @@ h1 {
     border-width: 1px;
   }
 }
+
+.nav_bar_height{
+  height: 50px;
+}
+
 tab1{
   padding-left:4em ;
   line-height: 26pt;
@@ -142,11 +160,6 @@ tab1{
 .input_width{
   width: 78%;
 }
-
-.loading_bg_color{
-  background-color: #E4F9FB;
-}
-
 
 section {
   width:100%;
